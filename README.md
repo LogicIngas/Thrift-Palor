@@ -3,5 +3,6 @@ For this subject we are required to develop a technical solution to a problem we
 We are required to use JAVA to develop the solution and are expected to have a working system on 
 conclusion of this subject.
 
-**PROJECT SPECIFICATIONS**
+# PROJECT SPECIFICATIONS
+
 <img width="496" height="559" alt="image" src="https://github.com/user-attachments/assets/ac7d19cc-c17d-4983-aa2d-c61d5c51f095" />
