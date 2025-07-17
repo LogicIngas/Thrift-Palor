@@ -1,11 +1,19 @@
 document.addEventListener('DOMContentLoaded', () => {
-    const cart = [];
+    let cart = [];
+
     const cartList = document.getElementById('cart-list');
     const cartTotal = document.getElementById('cart-total');
 
+    // Load cart from localStorage (if it exists)
+    const savedCart = localStorage.getItem('thriftpalor_cart');
+    if (savedCart) {
+        cart = JSON.parse(savedCart);
+        updateCartDisplay();
+    }
+
     // Helper to refresh cart UI
     function updateCartDisplay() {
-        cartList.innerHTML = ''; // Clear existing items
+        cartList.innerHTML = '';
         let total = 0;
 
         cart.forEach(item => {
@@ -16,6 +24,9 @@ document.addEventListener('DOMContentLoaded', () => {
         });
 
         cartTotal.textContent = `Total: R${total.toFixed(2)}`;
+
+        // Save cart to localStorage
+        localStorage.setItem('thriftpalor_cart', JSON.stringify(cart));
     }
 
     // Add click listener to all "Add to Cart" buttons
@@ -26,6 +37,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 name: button.getAttribute('data-name'),
                 price: parseFloat(button.getAttribute('data-price'))
             };
+
             cart.push(item);
             alert(`${item.name} has been added to your cart!`);
             updateCartDisplay();

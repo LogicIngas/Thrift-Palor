@@ -1,8 +1,12 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <title>Login | Thrift-Palor</title>
-    <link rel="stylesheet" href="css/forms.css">
+    
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="css/login.css">
     <link rel="stylesheet" href="css/styles.css">
     <link rel="stylesheet" href="css/navbar.css">
     <link rel="stylesheet" href="css/buttons.css">
@@ -11,35 +15,52 @@
     <div class="auth-container">
         <h1>Login</h1>
         <form id="loginForm">
+            
             <div class="form-group">
-                <label>Username</label>
+                <label for="username">Username</label>
                 <input type="text" id="username" placeholder="e.g. MindOverMatter" required>
             </div>
+
             <div class="form-group">
-                <label>Email</label>
+                <label for="email">Email</label>
                 <input type="email" id="email" placeholder="e.g. aaaa@example.com" required>
             </div>
-            <div class="form-group">
-                <label>Password</label>
-                <input type="password" id="password" placeholder="Minimum 8 characters" required>
-            </div>
 
             <div class="form-group">
-                <label>Role</label><br>
-                <input type="radio" name="role" value="buyer" id="buyer" required>
-                <label for="buyer">Buyer</label>
-
-                <input type="radio" name="role" value="seller" id="seller">
-                <label for="seller">Seller</label>
-
-                <input type="radio" name="role" value="admin" id="admin">
-                <label for="admin">Admin</label>
+                <label for="password">Password</label>
+                <input 
+                    type="password" 
+                    id="password" 
+                    placeholder="Minimum 8 characters" 
+                    minlength="8" 
+                    required>
             </div>
+
+            <fieldset class="form-group">
+                <legend>Role</legend>
+                <div class="role-group">
+                    <label class="role-option" for="buyer">
+                        <input type="radio" name="role" value="buyer" id="buyer" required>
+                        Buyer
+                    </label>
+                    <label class="role-option" for="seller">
+                        <input type="radio" name="role" value="seller" id="seller">
+                        Seller
+                    </label>
+                    <label class="role-option" for="admin">
+                        <input type="radio" name="role" value="admin" id="admin">
+                        Admin
+                    </label>
+                </div>
+            </fieldset>
 
             <button type="submit" class="thrift-btn">Log In</button>
         </form>
+
         <p>New user? <a href="signup.html">Sign up</a></p>
     </div>
+
+    <!-- JavaScript -->
     <script src="javascript/login.js"></script>
 </body>
 </html>

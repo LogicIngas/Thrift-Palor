@@ -1,0 +1,57 @@
+/* navbar.css */
+nav {
+    background-color: #5c3d91;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 100;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+nav ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+}
+
+nav ul li {
+    margin: 0;
+}
+
+nav ul li a {
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 1rem 1.5rem;
+    text-decoration: none;
+    font-weight: 500;
+    transition: all 0.3s ease;
+}
+
+nav ul li a:hover {
+    background-color: #452c6f;
+    color: white;
+}
+
+/* Active link style */
+nav ul li a.active {
+    background-color: #3a2568;
+}
+
+/* Responsive adjustments */
+@media (max-width: 600px) {
+    nav ul {
+        flex-wrap: wrap;
+    }
+    
+    nav ul li {
+        flex: 1 0 auto;
+    }
+    
+    nav ul li a {
+        padding: 0.8rem 0.5rem;
+        font-size: 0.9rem;
+    }
+}

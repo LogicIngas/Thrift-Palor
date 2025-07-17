@@ -7,43 +7,107 @@
     <link rel="stylesheet" href="css/styles.css">
     <link rel="stylesheet" href="css/navbar.css">
     <link rel="stylesheet" href="css/home.css">
-    <link rel="stylesheet" href="css/forms.css">
-    
+    <link rel="stylesheet" href="css/login.css">
 </head>
 <body>
-    <!-- ... rest of our HTML here ... -->
-     <div id="auth-wall">  <!-- New auth overlay -->
+
+    <!-- Auth Overlay -->
+    <div id="auth-wall">
         <div class="auth-modal">
             <h2>Welcome to Thrift-Palor</h2>
             <div class="auth-buttons">
                 <a href="signup.html" class="thrift-btn">Sign Up</a>
                 <a href="login.html" class="thrift-btn">Log In</a>
-                <a href="products.html" class="prod">products</a>
             </div>
         </div>
     </div>
 
-    <!-- Original content (hidden until auth) -->
+    <!-- Main Content -->
     <div id="app-content" style="display:none;">
 
-    <header>
-        <h1>Welcome to Our Website</h1>
-    </header>
-    <nav>
+    <!-- Hero Section -->
+    <section class="hero">
+        <h1>Style Meets Savings at Thrift-Palor</h1>
+        <p>Discover vintage gems, eco-friendly fashion, and unbeatable deals</p>
+        <a href="products.html" class="cta-btn">Shop Now</a>
+    </section>
+
+    <!-- Quick Links -->
+    <section class="quick-access">
+        <h2>Jump In</h2>
+        <div class="quick-buttons">
+            <a href="signup.html">Sign Up</a>
+            <a href="login.html">Log In</a>
+            <a href="products.html">View Products</a>
+        </div>
+    </section>
+
+    <!-- Featured Products -->
+    <section class="featured-products">
+        <h2>🌟 Featured Finds</h2>
+        <div class="product-preview">
+            <div class="product-card">
+                <img src="images/shirt.jpg" alt="Vintage Shirt">
+                <p>Vintage Shirt — R120</p>
+            </div>
+            <div class="product-card">
+                <img src="images/bag.jpg" alt="Retro Handbag">
+                <p>Retro Handbag — R200</p>
+            </div>
+        </div>
+        <a href="products.html" class="view-more">See All Products</a>
+    </section>
+
+    <!-- Mission Section -->
+    <section class="mission">
+        <h2>💬 Our Mission</h2>
+        <p>Thrift-Palor is your gateway to affordable fashion, vintage gems, and sustainable shopping. We believe in stylish living that doesn’t hurt your wallet—or the planet.</p>
+    </section>
+
+    <!-- Benefits Section -->
+    <section class="benefits">
+        <h2>🛍️ Why Thrift with Us?</h2>
         <ul>
-            <li><a href="home.html">Home</a></li>
-            <li><a href="about.html">About</a></li>
-            <li><a href="contact.html">Contact</a></li>
+            <li>🌿 Eco-friendly Choices</li>
+            <li>💸 Budget-Friendly Finds</li>
+            <li>💃 Unique Style Statements</li>
         </ul>
-    </nav>
-    <main>
-        <h2>Home Page</h2>
-        <p>This is the home page of my website. Here you can find various resources and information.</p>
-    </main>
+    </section>
+
+    <!-- Testimonials -->
+    <section class="testimonials">
+        <h2>🗣️ What Our Customers Say</h2>
+        <blockquote>“Loved the denim jacket I snagged for just R90!”</blockquote>
+        <blockquote>“Perfect place to discover hidden gems. Fashion meets nostalgia!”</blockquote>
+    </section>
+
+    <!-- Blog Snippets / Styling Tips -->
+    <section class="styling-tips">
+        <h2>🧠 Styling Tips</h2>
+        <p>3 Ways to Style Vintage Denim:</p>
+        <ul>
+            <li>Layer with modern basics</li>
+            <li>Add retro sneakers for flair</li>
+            <li>Accessorize with thrifted scarves</li>
+        </ul>
+    </section>
+
+    <!-- Newsletter Signup -->
+    <section class="newsletter">
+        <h2>📬 Stay Updated</h2>
+        <form>
+            <input type="email" placeholder="Enter your email">
+            <button type="submit">Subscribe</button>
+        </form>
+    </section>
+
     <footer>
-        <p>&copy; 2025/6 E-Commerce Website</p>
+        <p>&copy; 2025/6 Thrift-Palor. Built with love and style.</p>
     </footer>
+
+    </div>
+
+    <!-- JavaScript -->
     <script src="javascript/scripts.js"></script>
-    <script src="javascript/login.js"></script>
 </body>
 </html>

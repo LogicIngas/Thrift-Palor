@@ -1,57 +1,34 @@
-document.getElementById('loginForm').addEventListener('submit', async (e) => {
-    e.preventDefault();
-    
-    const credentials = {
-        email: document.getElementById('email').value,
-        password: document.getElementById('password').value
-    };
-
-    try {
-        const response = await fetch('http://localhost:8080/api/auth/login', {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify(credentials)
-        });
-
-        const result = await response.text();
-        alert(result);
-        
-        if (response.ok) {
-            localStorage.setItem('thriftpalor_user', credentials.email);
-            window.location.href = 'index.html';
-        }
-    } catch (error) {
-        console.error('Login error:', error);
-    }
-});
-
 document.addEventListener("DOMContentLoaded", () => {
     const loginForm = document.getElementById("loginForm");
 
     loginForm.addEventListener("submit", function (e) {
-        e.preventDefault(); // Prevent actual form submission
+        e.preventDefault(); // Prevent form submission
 
-        const username = document.getElementById("username").value;
-        const email = document.getElementById("email").value;
-        const password = document.getElementById("password").value;
+        const username = document.getElementById("username").value.trim();
+        const email = document.getElementById("email").value.trim();
+        const password = document.getElementById("password").value.trim();
 
-        const role = document.querySelector('input[name="role"]:checked')?.value;
+        // Get selected role
+        const selectedRole = document.querySelector('input[name="role"]:checked');
 
-        if (!role) {
-            alert("⚠️ Please select a role before logging in.");
+        // Validation
+        if (!username || !email || !password) {
+            alert("⚠️ Please fill in all fields.");
             return;
         }
 
-        // Displaying the collected info (for now)
-        console.log("Username:", username);
-        console.log("Email:", email);
-        console.log("Password:", password);
-        console.log("Role:", role);
+        if (!selectedRole) {
+            alert("⚠️ Please select a user role before logging in.");
+            return;
+        }
 
-        // Simulate success message
-        alert(`✅ Welcome ${username}!\nRole: ${role.toUpperCase()}`);
+        const role = selectedRole.value;
 
-        // Optionally redirect or clear form
-        loginForm.reset();
+        // Optional: Save user info to localStorage
+        localStorage.setItem("thriftpalor_user", JSON.stringify({ username, email, role }));
+
+        // Redirect to homepage
+        alert(`✅ Login successful as ${role.toUpperCase()}!`);
+        window.location.href = "index.html";
     });
 });
