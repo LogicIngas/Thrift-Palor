@@ -20,3 +20,21 @@ document.addEventListener("DOMContentLoaded", () => {
         }, 2000);
     });
 });
+document.addEventListener('DOMContentLoaded', () => {
+    const form = document.getElementById('signupForm');
+
+    form.addEventListener('submit', function(event) {
+        event.preventDefault(); // Prevent default form submission
+
+        // 💡 You can add any validation or "mini action" here
+        const username = document.getElementById('username').value;
+        const firstName = document.getElementById('firstName').value;
+        const lastName = document.getElementById('lastName').value;
+
+        // 🧠 Example: Display a welcome alert
+        alert(`Welcome, ${firstName} ${lastName}! Your account has been created.`);
+
+        // 🛒 Redirect to products page
+        window.location.href = 'products.html';
+    });
+});

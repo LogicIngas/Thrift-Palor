@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Thrift-Palor | Products</title>
+    <link rel="stylesheet" href="css/navbar.css">
+    <link rel="stylesheet" href="css/products.css">
+</head>
+<body>
+    <div class="products-container">
+        <h1>Welcome to Thrift-Palor!</h1>
+        <p>Explore our curated collection of thrift treasures below 👕📦👜</p>
+
+        <!-- Product Grid -->
+        <div class="product-grid">
+            <div class="product-item">
+                <img src="images/shirt.jpg" alt="Vintage Shirt">
+                <h2>Vintage Shirt</h2>
+                <p>R120</p>
+                <button 
+                    class="add-to-cart-btn" 
+                    data-name="Vintage Shirt" 
+                    data-price="120"
+                >Add to Cart</button>
+            </div>
+
+            <div class="product-item">
+                <img src="images/bag.jpg" alt="Retro Handbag">
+                <h2>Retro Handbag</h2>
+                <p>R200</p>
+                <button 
+                    class="add-to-cart-btn" 
+                    data-name="Retro Handbag" 
+                    data-price="200"
+                >Add to Cart</button>
+            </div>
+
+            <!-- 🔧 Add more product blocks here as needed -->
+        </div>
+
+        <!-- Cart Section -->
+        <div class="cart-section">
+            <h2>🛒 Your Cart</h2>
+            <ul id="cart-list"></ul>
+            <p id="cart-total">Total: R0</p>
+        </div>
+    </div>
+
+    <!-- Link to Cart JS -->
+    <script src="js/cart.js"></script>
+</body>
+</html>
+
