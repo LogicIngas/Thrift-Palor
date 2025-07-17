@@ -1,57 +1,84 @@
-/* navbar.css */
+/* navbar.css - Enhanced */
 nav {
-    background-color: #5c3d91;
-    position: fixed;
-    top: 0;
-    width: 100%;
-    z-index: 100;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  background-color: var(--primary);
+  position: sticky;
+  top: 0;
+  width: 100%;
+  z-index: 1000;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
 }
 
 nav ul {
-    list-style-type: none;
-    margin: 0;
-    padding: 0;
-    display: flex;
-    justify-content: center;
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
 }
 
 nav ul li {
-    margin: 0;
+  margin: 0;
+  position: relative;
 }
 
 nav ul li a {
-    display: block;
-    color: white;
-    text-align: center;
-    padding: 1rem 1.5rem;
-    text-decoration: none;
-    font-weight: 500;
-    transition: all 0.3s ease;
+  display: block;
+  color: var(--white);
+  text-align: center;
+  padding: 1rem 1.5rem;
+  text-decoration: none;
+  font-weight: 500;
+  transition: var(--transition);
+  position: relative;
 }
 
 nav ul li a:hover {
-    background-color: #452c6f;
-    color: white;
+  background-color: var(--primary-dark);
+  color: var(--white);
 }
 
-/* Active link style */
-nav ul li a.active {
-    background-color: #3a2568;
+/* Active link indicator */
+nav ul li a.active::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 80%;
+  height: 3px;
+  background-color: var(--secondary);
 }
 
-/* Responsive adjustments */
-@media (max-width: 600px) {
-    nav ul {
-        flex-wrap: wrap;
-    }
-    
-    nav ul li {
-        flex: 1 0 auto;
-    }
-    
-    nav ul li a {
-        padding: 0.8rem 0.5rem;
-        font-size: 0.9rem;
-    }
+/* Cart indicator */
+.cart-indicator {
+  position: absolute;
+  top: -5px;
+  right: -5px;
+  background-color: var(--secondary);
+  color: white;
+  border-radius: 50%;
+  width: 20px;
+  height: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.75rem;
+}
+
+/* Mobile menu */
+@media (max-width: 768px) {
+  nav ul {
+    flex-direction: column;
+    gap: 0;
+  }
+  
+  nav ul li {
+    width: 100%;
+  }
+  
+  nav ul li a {
+    padding: 0.8rem;
+  }
 }

@@ -1,53 +1,195 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <title>Thrift-Palor | Products</title>
     <link rel="stylesheet" href="css/navbar.css">
     <link rel="stylesheet" href="css/products.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
+
 <body>
+    <nav>
+        <ul>
+            <li><a href="home.html">Home</a></li>
+            <li><a href="products.html" class="active">Products</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="contact.html">Contact</a></li>
+            <li>
+                <a href="#cart-section">
+                    <i class="fas fa-shopping-cart"></i>
+                    <span class="cart-count">0</span>
+                </a>
+            </li>
+        </ul>
+    </nav>
+
     <div class="products-container">
         <h1>Welcome to Thrift-Palor!</h1>
-        <p>Explore our curated collection of thrift treasures below 👕📦👜</p>
+        <p class="subtitle">Explore our curated collection of thrift treasures below 👕📦👜</p>
 
-        <!-- Product Grid -->
-        <div class="product-grid">
-            <div class="product-item">
-                <img src="images/shirt.jpg" alt="Vintage Shirt">
-                <h2>Vintage Shirt</h2>
-                <p>R120</p>
-                <button 
-                    class="add-to-cart-btn" 
-                    data-name="Vintage Shirt" 
-                    data-price="120"
-                >Add to Cart</button>
-            </div>
-
-            <div class="product-item">
-                <img src="images/bag.jpg" alt="Retro Handbag">
-                <h2>Retro Handbag</h2>
-                <p>R200</p>
-                <button 
-                    class="add-to-cart-btn" 
-                    data-name="Retro Handbag" 
-                    data-price="200"
-                >Add to Cart</button>
-            </div>
-
-            <!-- 🔧 Add more product blocks here as needed -->
+        <!-- Category Filters -->
+        <div class="category-filters">
+            <button class="category-filter active" data-category="all">All Items</button>
+            <button class="category-filter" data-category="clothing">Clothing</button>
+            <button class="category-filter" data-category="accessories">Accessories</button>
+            <button class="category-filter" data-category="shoes">Shoes</button>
+            <button class="category-filter" data-category="home">Home Decor</button>
         </div>
 
+        <!-- Clothing Section -->
+        <section class="product-category" data-category="clothing">
+            <h2 class="category-title"><i class="fas fa-tshirt"></i> Clothing</h2>
+            <div class="product-grid">
+                <!-- Shirts -->
+                <div class="product-item">
+                    <div class="product-badge">Vintage</div>
+                    <img src="images/products/clothing/shirt1.jpg" alt="Vintage Flannel Shirt">
+                    <div class="product-details">
+                        <h2>Vintage Flannel Shirt</h2>
+                        <p>R120</p>
+                        <button class="add-to-cart-btn" data-name="Vintage Flannel Shirt" data-price="120"
+                            data-image="images/products/clothing/shirt1.jpg">
+                            Add to Cart
+                        </button>
+                    </div>
+                </div>
+
+                <div class="product-item">
+                    <img src="images/products/clothing/dress1.jpg" alt="Retro Floral Dress">
+                    <div class="product-details">
+                        <h2>Retro Floral Dress</h2>
+                        <p>R180</p>
+                        <button class="add-to-cart-btn" data-name="Retro Floral Dress" data-price="180"
+                            data-image="images/products/clothing/dress1.jpg">
+                            Add to Cart
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Jeans -->
+                <div class="product-item">
+                    <div class="product-badge">Classic</div>
+                    <img src="images/products/clothing/jeans1.jpg" alt="Classic Blue Jeans">
+                    <div class="product-details">
+                        <h2>Classic Blue Jeans</h2>
+                        <p>R150</p>
+                        <button class="add-to-cart-btn" data-name="Classic Blue Jeans" data-price="150"
+                            data-image="images/products/clothing/jeans1.jpg">
+                            Add to Cart
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Accessories Section -->
+        <section class="product-category" data-category="accessories">
+            <h2 class="category-title"><i class="fas fa-rings"></i> Accessories</h2>
+            <div class="product-grid">
+                <!-- Bags -->
+                <div class="product-item">
+                    <div class="product-badge">Popular</div>
+                    <img src="images/products/accessories/bag1.jpg" alt="Retro Handbag">
+                    <div class="product-details">
+                        <h2>Retro Handbag</h2>
+                        <p>R200</p>
+                        <button class="add-to-cart-btn" data-name="Retro Handbag" data-price="200"
+                            data-image="images/products/accessories/bag1.jpg">
+                            Add to Cart
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Jewelry -->
+                <div class="product-item">
+                    <img src="images/products/accessories/necklace1.jpg" alt="Vintage Necklace">
+                    <div class="product-details">
+                        <h2>Vintage Necklace</h2>
+                        <p>R90</p>
+                        <button class="add-to-cart-btn" data-name="Vintage Necklace" data-price="90"
+                            data-image="images/products/accessories/necklace1.jpg">
+                            Add to Cart
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Shoes Section -->
+        <section class="product-category" data-category="shoes">
+            <h2 class="category-title"><i class="fas fa-shoe-prints"></i> Shoes</h2>
+            <div class="product-grid">
+                <!-- Sneakers -->
+                <div class="product-item">
+                    <img src="images/products/shoes/sneakers1.jpg" alt="Vintage Sneakers">
+                    <div class="product-details">
+                        <h2>Vintage Sneakers</h2>
+                        <p>R250</p>
+                        <button class="add-to-cart-btn" data-name="Vintage Sneakers" data-price="250"
+                            data-image="images/products/shoes/sneakers1.jpg">
+                            Add to Cart
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Home Decor Section -->
+        <section class="product-category" data-category="home">
+            <h2 class="category-title"><i class="fas fa-home"></i> Home Decor</h2>
+            <div class="product-grid">
+                <!-- Decor Items -->
+                <div class="product-item">
+                    <div class="product-badge">Unique</div>
+                    <img src="images/products/home/vase1.jpg" alt="Vintage Vase">
+                    <div class="product-details">
+                        <h2>Vintage Vase</h2>
+                        <p>R180</p>
+                        <button class="add-to-cart-btn" data-name="Vintage Vase" data-price="180"
+                            data-image="images/products/home/vase1.jpg">
+                            Add to Cart
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
         <!-- Cart Section -->
-        <div class="cart-section">
-            <h2>🛒 Your Cart</h2>
+        <div class="cart-section" id="cart-section">
+            <h2><i class="fas fa-shopping-cart"></i> Your Cart</h2>
             <ul id="cart-list"></ul>
             <p id="cart-total">Total: R0</p>
+            <button class="checkout-btn">Proceed to Checkout</button>
         </div>
     </div>
 
-    <!-- Link to Cart JS -->
+    <!-- JavaScript -->
     <script src="javascript/cart.js"></script>
-</body>
-</html>
+    <script>
+        // Category filter functionality
+        document.querySelectorAll('.category-filter').forEach(button => {
+            button.addEventListener('click', function () {
+                // Update active button
+                document.querySelectorAll('.category-filter').forEach(btn => {
+                    btn.classList.remove('active');
+                });
+                this.classList.add('active');
 
+                const category = this.dataset.category;
+
+                // Show/hide categories
+                document.querySelectorAll('.product-category').forEach(section => {
+                    if (category === 'all' || section.dataset.category === category) {
+                        section.style.display = 'block';
+                    } else {
+                        section.style.display = 'none';
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+
+</html>

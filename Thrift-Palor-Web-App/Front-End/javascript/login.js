@@ -13,12 +13,12 @@ document.addEventListener("DOMContentLoaded", () => {
 
         // Validation
         if (!username || !email || !password) {
-            alert("⚠️ Please fill in all fields.");
+            alert(" Please fill in all fields.");
             return;
         }
 
         if (!selectedRole) {
-            alert("⚠️ Please select a user role before logging in.");
+            alert(" Please select a user role before logging in.");
             return;
         }
 
@@ -28,7 +28,7 @@ document.addEventListener("DOMContentLoaded", () => {
         localStorage.setItem("thriftpalor_user", JSON.stringify({ username, email, role }));
 
         // Redirect to homepage
-        alert(`✅ Login successful as ${role.toUpperCase()}!`);
-        window.location.href = "index.html";
+        alert(`Login successful as ${role.toUpperCase()}!`);
+        window.location.href = "home.html";
     });
 });
