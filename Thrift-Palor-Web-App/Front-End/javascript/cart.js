@@ -1,47 +1,50 @@
-// cart.js - Enhanced with modern practices
 document.addEventListener('DOMContentLoaded', () => {
-  const CART_KEY = 'thriftpalor_cart';
-  let cart = loadCart();
+  // API endpoints — adjust URLs to your backend
+  const API_GET_CART = '/api/cart/items';
+  const API_ADD_ITEM = '/api/cart/add';
+  const API_REMOVE_ITEM = '/api/cart/remove';
 
-  // Initialize cart UI
-  updateCartUI();
+  // Load and render cart on page load
+  fetchCart();
+
   setupEventListeners();
 
-  function loadCart() {
-    const savedCart = localStorage.getItem(CART_KEY);
-    return savedCart ? JSON.parse(savedCart) : [];
+  function fetchCart() {
+    fetch(API_GET_CART)
+      .then(res => {
+        if (!res.ok) throw new Error('Failed to fetch cart');
+        return res.json();
+      })
+      .then(data => {
+        updateCartUI(data);
+      })
+      .catch(err => {
+        showToast('Error loading cart', 'error');
+        updateCartUI([]); // Show empty cart on error
+      });
   }
 
-  function saveCart() {
-    localStorage.setItem(CART_KEY, JSON.stringify(cart));
-    dispatchCartUpdated();
-  }
-
-  function dispatchCartUpdated() {
-    window.dispatchEvent(new CustomEvent('cart-updated', {
-      detail: { cart }
-    }));
-  }
-
-  function updateCartUI() {
+  function updateCartUI(cart) {
     const cartList = document.getElementById('cart-list');
     const cartTotal = document.getElementById('cart-total');
     const cartCountElements = document.querySelectorAll('.cart-count');
 
     if (cartList) {
-      cartList.innerHTML = cart.length > 0
-        ? cart.map(item => `
-            <li class="cart-item">
-              <div class="cart-item-info">
-                <span class="cart-item-name">${item.name}</span>
-                <span class="cart-item-price">R${item.price.toFixed(2)}</span>
-              </div>
-              <div class="cart-item-actions">
-                <button class="btn-remove" data-id="${item.id}">Remove</button>
-              </div>
-            </li>
-          `).join('')
-        : '<li class="empty-cart">Your cart is empty</li>';
+      if (cart.length === 0) {
+        cartList.innerHTML = '<li class="empty-cart">Your cart is empty</li>';
+      } else {
+        cartList.innerHTML = cart.map(item => `
+          <li class="cart-item">
+            <div class="cart-item-info">
+              <span class="cart-item-name">${item.name}</span>
+              <span class="cart-item-price">R${item.price.toFixed(2)}</span>
+            </div>
+            <div class="cart-item-actions">
+              <button class="btn-remove" data-id="${item.id}">Remove</button>
+            </div>
+          </li>
+        `).join('');
+      }
     }
 
     if (cartTotal) {
@@ -60,42 +63,58 @@ document.addEventListener('DOMContentLoaded', () => {
       button.addEventListener('click', addToCart);
     });
 
-    // Remove item buttons
-    document.addEventListener('click', function(e) {
+    // Remove item buttons - event delegation
+    document.addEventListener('click', e => {
       if (e.target.classList.contains('btn-remove')) {
         removeFromCart(e.target.dataset.id);
       }
     });
-
-    // Cart updated event
-    window.addEventListener('cart-updated', updateCartUI);
   }
 
   function addToCart(e) {
     const button = e.target;
     const product = {
-      id: button.dataset.id || Date.now().toString(),
+      id: button.dataset.id,
       name: button.dataset.name,
       price: parseFloat(button.dataset.price),
       image: button.dataset.image || ''
     };
 
-    // Check if item already exists
-    const existingItem = cart.find(item => item.id === product.id);
-    if (existingItem) {
-      showToast(`${product.name} is already in your cart`, 'info');
-      return;
-    }
-
-    cart.push(product);
-    saveCart();
-    showToast(`${product.name} added to cart!`, 'success');
+    fetch(API_ADD_ITEM, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(product)
+    })
+      .then(res => {
+        if (!res.ok) throw new Error('Failed to add to cart');
+        return res.json();
+      })
+      .then(data => {
+        fetchCart(); // Refresh cart UI
+        showToast(`${product.name} added to cart!`, 'success');
+      })
+      .catch(() => {
+        showToast('Failed to add item to cart', 'error');
+      });
   }
 
   function removeFromCart(id) {
-    cart = cart.filter(item => item.id !== id);
-    saveCart();
-    showToast('Item removed from cart', 'info');
+    fetch(API_REMOVE_ITEM, {
+      method: 'POST', // or DELETE depending on your API design
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ id })
+    })
+      .then(res => {
+        if (!res.ok) throw new Error('Failed to remove from cart');
+        return res.json();
+      })
+      .then(data => {
+        fetchCart(); // Refresh cart UI
+        showToast('Item removed from cart', 'info');
+      })
+      .catch(() => {
+        showToast('Failed to remove item from cart', 'error');
+      });
   }
 
   function showToast(message, type = 'success') {
@@ -103,7 +122,7 @@ document.addEventListener('DOMContentLoaded', () => {
     toast.className = `toast toast-${type}`;
     toast.textContent = message;
     document.body.appendChild(toast);
-    
+
     setTimeout(() => toast.classList.add('show'), 10);
     setTimeout(() => {
       toast.classList.remove('show');

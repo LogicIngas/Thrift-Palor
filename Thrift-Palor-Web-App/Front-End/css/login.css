@@ -1,37 +1,38 @@
-/* login.css */
+/* login.css - Polished */
 .auth-container {
-    max-width: 450px;
-    margin: 4rem auto;
+    max-width: 480px;
+    margin: 5rem auto;
     padding: 2.5rem;
     background-color: white;
-    border-radius: 10px;
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    border-radius: 12px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
 }
 
 .auth-container h1 {
     color: #5c3d91;
     text-align: center;
+    font-size: 2.4rem;
+    font-weight: 700;
     margin-bottom: 1.8rem;
-    font-size: 2.2rem;
 }
 
 .auth-container p {
     text-align: center;
     margin-top: 1.5rem;
     color: #666;
+    font-size: 0.95rem;
 }
 
 .auth-container a {
     color: #5c3d91;
-    font-weight: 600;
     text-decoration: none;
+    font-weight: bold;
 }
 
 .auth-container a:hover {
     text-decoration: underline;
 }
 
-/* Form styles */
 .form-group {
     margin-bottom: 1.5rem;
 }
@@ -39,36 +40,31 @@
 .form-group label {
     display: block;
     margin-bottom: 0.5rem;
-    color: #555;
-    font-weight: 500;
+    color: #444;
+    font-weight: 600;
 }
 
-.form-group input[type="text"],
-.form-group input[type="email"],
-.form-group input[type="password"] {
+.form-group input {
     width: 100%;
-    padding: 0.8rem;
-    border: 1px solid #ddd;
-    border-radius: 6px;
+    padding: 0.85rem;
+    border: 1px solid #ccc;
+    border-radius: 8px;
     font-size: 1rem;
-    transition: border-color 0.3s ease;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
 }
 
 .form-group input:focus {
     border-color: #5c3d91;
-    outline: none;
     box-shadow: 0 0 0 3px rgba(92, 61, 145, 0.2);
-}
-
-/* Role selection styles */
-.form-group-role {
-    margin: 1.8rem 0;
+    outline: none;
 }
 
 .role-options {
     display: flex;
-    gap: 1.5rem;
-    margin-top: 0.5rem;
+    justify-content: space-between;
+    margin-top: 1rem;
+    gap: 1rem;
+    flex-wrap: wrap;
 }
 
 .role-option {
@@ -79,28 +75,19 @@
 
 .role-option input[type="radio"] {
     accent-color: #5c3d91;
-    width: 18px;
-    height: 18px;
 }
 
-.role-option label {
-    margin-bottom: 0;
-    cursor: pointer;
-}
-
-/* Button styles */
 .thrift-btn {
     width: 100%;
-    padding: 0.9rem;
+    padding: 1rem;
     background-color: #5c3d91;
     color: white;
     border: none;
-    border-radius: 6px;
+    border-radius: 8px;
     font-size: 1rem;
     font-weight: 600;
+    transition: background-color 0.3s ease, transform 0.2s ease;
     cursor: pointer;
-    transition: all 0.3s ease;
-    margin-top: 0.5rem;
 }
 
 .thrift-btn:hover {
@@ -108,15 +95,78 @@
     transform: translateY(-2px);
 }
 
-/* Responsive adjustments */
 @media (max-width: 600px) {
     .auth-container {
         margin: 2rem 1rem;
-        padding: 1.8rem;
     }
-    
+
     .role-options {
         flex-direction: column;
-        gap: 0.8rem;
     }
+}
+/* **********************************************************  */
+/* login.css - Advanced Version */
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: #f0f2f5;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.login-container {
+    background: #ffffff;
+    padding: 2.5rem;
+    border-radius: 12px;
+    box-shadow: 0 10px 35px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 400px;
+}
+
+.login-container h2 {
+    text-align: center;
+    margin-bottom: 1.5rem;
+    color: #5c3d91;
+    font-size: 1.8rem;
+}
+
+.login-container label {
+    display: block;
+    margin-bottom: 0.5rem;
+    color: #555;
+}
+
+.login-container input {
+    width: 100%;
+    padding: 0.8rem;
+    margin-bottom: 1rem;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    font-size: 1rem;
+    transition: 0.3s;
+}
+
+.login-container input:focus {
+    border-color: #5c3d91;
+    box-shadow: 0 0 0 3px rgba(92, 61, 145, 0.15);
+    outline: none;
+}
+
+.login-container button {
+    width: 100%;
+    padding: 0.9rem;
+    background: #5c3d91;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 1.1rem;
+    font-weight: bold;
+    transition: background 0.3s ease;
+}
+
+.login-container button:hover {
+    background: #452c6f;
+    cursor: pointer;
 }

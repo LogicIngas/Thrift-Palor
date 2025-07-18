@@ -1,56 +1,65 @@
-/* signup.css */
-.auth-container {
-    max-width: 500px;
-    margin: 2rem auto;
-    padding: 2rem;
-    background-color: white;
-    border-radius: 10px;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+/* signup.css - Advanced Version */
+body {
+    background: linear-gradient(to right, #f6f9fc, #e9ecf3);
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
 }
 
-.auth-container h1 {
-    color: #5c3d91;
-    text-align: center;
-    margin-bottom: 1.5rem;
-    font-size: 2rem;
-}
-
-.auth-container p {
-    text-align: center;
-    margin-top: 1.5rem;
-    color: #666;
-}
-
-.auth-container a {
-    color: #5c3d91;
-    text-decoration: none;
-    font-weight: bold;
-}
-
-.auth-container a:hover {
-    text-decoration: underline;
-}
-
-.thrift-btn {
+.signup-container {
+    background-color: #fff;
+    padding: 2.5rem;
+    border-radius: 15px;
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.08);
     width: 100%;
-    padding: 0.8rem;
-    background-color: #5c3d91;
-    color: white;
-    border: none;
-    border-radius: 5px;
+    max-width: 450px;
+}
+
+.signup-container h2 {
+    text-align: center;
+    color: #5c3d91;
+    margin-bottom: 1.5rem;
+}
+
+.signup-container label {
+    display: block;
+    margin-bottom: 0.5rem;
+    color: #444;
+    font-size: 0.95rem;
+}
+
+.signup-container input {
+    width: 100%;
+    padding: 0.85rem;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+    margin-bottom: 1.2rem;
     font-size: 1rem;
+    transition: border 0.3s;
+}
+
+.signup-container input:focus {
+    border-color: #5c3d91;
+    box-shadow: 0 0 0 3px rgba(92, 61, 145, 0.1);
+    outline: none;
+}
+
+.signup-container button {
+    width: 100%;
+    padding: 1rem;
+    background-color: #5c3d91;
+    color: #fff;
+    border: none;
+    border-radius: 8px;
+    font-size: 1.1rem;
+    font-weight: bold;
     cursor: pointer;
-    transition: background-color 0.3s ease;
+    transition: background-color 0.3s;
 }
 
-.thrift-btn:hover {
+.signup-container button:hover {
     background-color: #452c6f;
-}
-
-/* Responsive adjustments */
-@media (max-width: 600px) {
-    .auth-container {
-        margin: 1rem;
-        padding: 1.5rem;
-    }
 }
