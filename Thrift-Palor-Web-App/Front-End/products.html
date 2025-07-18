@@ -10,18 +10,21 @@
 </head>
 
 <body>
-    <nav>
-        <ul>
+    <!-- Hamburger Navbar -->
+    <nav class="navbar">
+        <div class="logo">Thrift Palor</div>
+        <div class="menu-toggle" id="menu-toggle" aria-label="Open navigation" tabindex="0">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+        <ul class="nav-links" id="nav-links">
             <li><a href="home.html">Home</a></li>
             <li><a href="products.html" class="active">Products</a></li>
             <li><a href="about.html">About</a></li>
             <li><a href="contact.html">Contact</a></li>
-            <li>
-                <a href="#cart-section">
-                    <i class="fas fa-shopping-cart"></i>
-                    <span class="cart-count">0</span>
-                </a>
-            </li>
+            <li><a href="login.html">Login</a></li>
+            <li><a href="signup.html">Sign Up</a></li>
         </ul>
     </nav>
 
@@ -42,41 +45,134 @@
         <section class="product-category" data-category="clothing">
             <h2 class="category-title"><i class="fas fa-tshirt"></i> Clothing</h2>
             <div class="product-grid">
-                <!-- Shirts -->
                 <div class="product-item">
                     <div class="product-badge">Vintage</div>
-                    <img src="images/products/clothing/shirt1.jpg" alt="Vintage Flannel Shirt">
+                    <img src="images/shirt.jpeg" alt="Vintage Flannel Shirt">
                     <div class="product-details">
-                        <h2>Vintage Flannel Shirt</h2>
+                        <h2>Orange Binnie</h2>
                         <p>R120</p>
-                        <button class="add-to-cart-btn" data-name="Vintage Flannel Shirt" data-price="120"
-                            data-image="images/products/clothing/shirt1.jpg">
+                        <button class="add-to-cart-btn" data-name="Orange Binnie" data-price="120"
+                            data-image="images/shirt.jpeg">
                             Add to Cart
                         </button>
                     </div>
                 </div>
-
                 <div class="product-item">
-                    <img src="images/products/clothing/dress1.jpg" alt="Retro Floral Dress">
+                    <div class="product-badge">SummerShort</div>
+                    <img src="images/Summer_Short.jpg" alt="Orange summer short">
                     <div class="product-details">
-                        <h2>Retro Floral Dress</h2>
+                        <h2>Summer Short</h2>
                         <p>R180</p>
-                        <button class="add-to-cart-btn" data-name="Retro Floral Dress" data-price="180"
-                            data-image="images/products/clothing/dress1.jpg">
+                        <button class="add-to-cart-btn" data-name="Summer Short" data-price="180"
+                            data-image="images/Summer_Short.jpg">
                             Add to Cart
                         </button>
                     </div>
                 </div>
-
-                <!-- Jeans -->
                 <div class="product-item">
                     <div class="product-badge">Classic</div>
-                    <img src="images/products/clothing/jeans1.jpg" alt="Classic Blue Jeans">
+                    <img src="images/BaggieJean.jpeg" alt="Classic Blue Jeans">
                     <div class="product-details">
                         <h2>Classic Blue Jeans</h2>
                         <p>R150</p>
                         <button class="add-to-cart-btn" data-name="Classic Blue Jeans" data-price="150"
-                            data-image="images/products/clothing/jeans1.jpg">
+                            data-image="images/BaggieJean.jpeg">
+                            Add to Cart
+                        </button>
+                    </div>
+                </div>
+                <div class="product-item">
+                    <div class="product-badge">Shirt</div>
+                    <img src="images/BogartShirt.jpg" alt="Classic Shirt">
+                    <div class="product-details">
+                        <h2>Black Shirt</h2>
+                        <p>R150</p>
+                        <button class="add-to-cart-btn" data-name="Black Shirt" data-price="150"
+                            data-image="images/BogartShirt.jpg">
+                            Add to Cart
+                        </button>
+                    </div>
+                </div>
+                <div class="product-item">
+                    <div class="product-badge">Hoodie</div>
+                    <img src="images/BnW Hoodie.jpeg" alt="Black and white Hoodie">
+                    <div class="product-details">
+                        <h2>Brown and White Hoodie</h2>
+                        <p>R150</p>
+                        <button class="add-to-cart-btn" data-name="Brown and White Hoodie" data-price="150"
+                            data-image="images/BnW Hoodie.jpeg">
+                            Add to Cart
+                        </button>
+                    </div>
+                </div>
+                <div class="product-item">
+                    <div class="product-badge">Silky</div>
+                    <img src="images/BrownSilk_Jersey.jpg" alt="Jersey">
+                    <div class="product-details">
+                        <h2>Brown Jersey</h2>
+                        <p>R150</p>
+                        <button class="add-to-cart-btn" data-name="Brown Jersey" data-price="150"
+                            data-image="images/BrownSilk_Jersey.jpg">
+                            Add to Cart
+                        </button>
+                    </div>
+                </div>
+                <div class="product-item">
+                    <div class="product-badge">Classic</div>
+                    <img src="images/grey_cardigan.jpeg" alt="Grey Cardigan">
+                    <div class="product-details">
+                        <h2>Grey Cardigan</h2>
+                        <p>R150</p>
+                        <button class="add-to-cart-btn" data-name="Grey Cardigan" data-price="150"
+                            data-image="images/grey_cardigan.jpeg">
+                            Add to Cart
+                        </button>
+                    </div>
+                </div>
+                <div class="product-item">
+                    <div class="product-badge">Binnie</div>
+                    <img src="images/OrangeBinnie.jpg" alt="Orange Binnie for Hackers">
+                    <div class="product-details">
+                        <h2>Orange Binnie for Hackers</h2>
+                        <p>R150</p>
+                        <button class="add-to-cart-btn" data-name="Orange Binnie for Hackers" data-price="150"
+                            data-image="images/OrangeBinnie.jpg">
+                            Add to Cart
+                        </button>
+                    </div>
+                </div>
+                <div class="product-item">
+                    <div class="product-badge">Shirt</div>
+                    <img src="images/PoloShirt.jpeg" alt="Brown Polo Shirt">
+                    <div class="product-details">
+                        <h2>Brown Polo Shirt</h2>
+                        <p>R150</p>
+                        <button class="add-to-cart-btn" data-name="Brown Polo Shirt" data-price="150"
+                            data-image="images/PoloShirt.jpeg">
+                            Add to Cart
+                        </button>
+                    </div>
+                </div>
+                <div class="product-item">
+                    <div class="product-badge">Vest</div>
+                    <img src="images/SmallSizeCodeVest.jpg" alt="Code Vest Jeans">
+                    <div class="product-details">
+                        <h2>Code Vest Jeans</h2>
+                        <p>R150</p>
+                        <button class="add-to-cart-btn" data-name="Code Vest Jeans" data-price="150"
+                            data-image="images/SmallSizeCodeVest.jpg">
+                            Add to Cart
+                        </button>
+                    </div>
+                </div>
+                <div class="product-item">
+                    <div class="product-badge">Hat</div>
+                    <img src="images/SPCCHat.jpg" alt="SPCC Hat">
+                    <div class="product-details">
+                        <h2>SPCC Hat</h2>
+                        <p>R150</p>
+                        <button class="add-to-cart-btn" data-name="SPCC Hat" data-price="150"
+                            data-image="images/SPCCHat.jpg">
                             Add to Cart
                         </button>
                     </div>
@@ -88,28 +184,86 @@
         <section class="product-category" data-category="accessories">
             <h2 class="category-title"><i class="fas fa-rings"></i> Accessories</h2>
             <div class="product-grid">
-                <!-- Bags -->
                 <div class="product-item">
                     <div class="product-badge">Popular</div>
-                    <img src="images/products/accessories/bag1.jpg" alt="Retro Handbag">
+                    <img src="images/shoulderbag.jpeg" alt="Retro Handbag">
                     <div class="product-details">
                         <h2>Retro Handbag</h2>
                         <p>R200</p>
                         <button class="add-to-cart-btn" data-name="Retro Handbag" data-price="200"
-                            data-image="images/products/accessories/bag1.jpg">
+                            data-image="images/shoulderbag.jpeg">
                             Add to Cart
                         </button>
                     </div>
                 </div>
-
-                <!-- Jewelry -->
                 <div class="product-item">
-                    <img src="images/products/accessories/necklace1.jpg" alt="Vintage Necklace">
+                    <div class="product-badge">VintageRings</div>
+                    <img src="images/VintageNeckLace.jpeg" alt="Vintage Necklace">
                     <div class="product-details">
                         <h2>Vintage Necklace</h2>
                         <p>R90</p>
                         <button class="add-to-cart-btn" data-name="Vintage Necklace" data-price="90"
-                            data-image="images/products/accessories/necklace1.jpg">
+                            data-image="images/VintageNeckLace.jpeg">
+                            Add to Cart
+                        </button>
+                    </div>
+                </div>
+                <div class="product-item">
+                    <div class="product-badge">Jewellery</div>
+                    <img src="images/WhiteWomenBracelets.jpeg" alt="White Women Bracelets">
+                    <div class="product-details">
+                        <h2>White Women Bracelets</h2>
+                        <p>R90</p>
+                        <button class="add-to-cart-btn" data-name="White Women Bracelets" data-price="90"
+                            data-image="images/WhiteWomenBracelets.jpeg">
+                            Add to Cart
+                        </button>
+                    </div>
+                </div>
+                <div class="product-item">
+                    <div class="product-badge">Bracelet</div>
+                    <img src="images/StylishBlackBracelets.jpeg" alt="Stylish Black Bracelet">
+                    <div class="product-details">
+                        <h2>Stylish Black Bracelet</h2>
+                        <p>R90</p>
+                        <button class="add-to-cart-btn" data-name="Stylish Black Bracelet" data-price="90"
+                            data-image="images/StylishBlackBracelets.jpeg">
+                            Add to Cart
+                        </button>
+                    </div>
+                </div>
+                <div class="product-item">
+                    <div class="product-badge">Ring</div>
+                    <img src="images/SilverAndRing.jpeg" alt="Man Rings">
+                    <div class="product-details">
+                        <h2>Man Rings</h2>
+                        <p>R90</p>
+                        <button class="add-to-cart-btn" data-name="Man Rings" data-price="90"
+                            data-image="images/SilverAndRing.jpeg">
+                            Add to Cart
+                        </button>
+                    </div>
+                </div>
+                <div class="product-item">
+                    <div class="product-badge">Bracelet</div>
+                    <img src="images/ElegantStackablePearl Bracelet.jpeg" alt="Pearl Bracelet">
+                    <div class="product-details">
+                        <h2>Pearl Bracelet</h2>
+                        <p>R90</p>
+                        <button class="add-to-cart-btn" data-name="Pearl Bracelet" data-price="90"
+                            data-image="images/ElegantStackablePearl Bracelet.jpeg">
+                            Add to Cart
+                        </button>
+                    </div>
+                </div>
+                <div class="product-item">
+                    <div class="product-badge">2 Piece Necklace</div>
+                    <img src="images/2PcBrace.jpeg" alt="2 Piece Necklace">
+                    <div class="product-details">
+                        <h2>2 Piece Necklace</h2>
+                        <p>R90</p>
+                        <button class="add-to-cart-btn" data-name="2 Piece Necklace" data-price="90"
+                            data-image="images/2PcBrace.jpeg">
                             Add to Cart
                         </button>
                     </div>
@@ -121,26 +275,98 @@
         <section class="product-category" data-category="shoes">
             <h2 class="category-title"><i class="fas fa-shoe-prints"></i> Shoes</h2>
             <div class="product-grid">
-                <!-- Sneakers -->
                 <div class="product-item">
-                    <img src="images/products/shoes/sneakers1.jpg" alt="Vintage Sneakers">
+                    <img src="images/FlatShoe.jpeg" alt="Formal Shoe">
                     <div class="product-details">
-                        <h2>Vintage Sneakers</h2>
+                        <h2>Formal Shoe</h2>
                         <p>R250</p>
-                        <button class="add-to-cart-btn" data-name="Vintage Sneakers" data-price="250"
-                            data-image="images/products/shoes/sneakers1.jpg">
+                        <button class="add-to-cart-btn" data-name="Formal Shoe" data-price="250"
+                            data-image="images/FlatShoe.jpeg">
                             Add to Cart
                         </button>
                     </div>
                 </div>
+
+                <div class="product-item">
+                    <img src="images/WomanChypreSandals.jpeg" alt="Sandals">
+                    <div class="product-details">
+                        <h2>Sandals</h2>
+                        <p>R250</p>
+                        <button class="add-to-cart-btn" data-name="Formal Shoe" data-price="250"
+                            data-image="images/FlatShoe.jpeg">
+                            Add to Cart
+                        </button>
+                    </div>
+                </div>
+
+                <div class="product-item">
+                    <img src="images/SlipOnSteelToeShoes.jpeg" alt="Racing Shoe">
+                    <div class="product-details">
+                        <h2>Racing Shoe</h2>
+                        <p>R250</p>
+                        <button class="add-to-cart-btn" data-name="Formal Shoe" data-price="250"
+                            data-image="images/FlatShoe.jpeg">
+                            Add to Cart
+                        </button>
+                    </div>
+                </div>
+
+                <div class="product-item">
+                    <img src="images/OxfordShoesMen.jpeg" alt="Man Shoe">
+                    <div class="product-details">
+                        <h2>Formal Exford Shoe</h2>
+                        <p>R250</p>
+                        <button class="add-to-cart-btn" data-name="Formal Shoe" data-price="250"
+                            data-image="images/FlatShoe.jpeg">
+                            Add to Cart
+                        </button>
+                    </div>
+                </div>
+
+                <div class="product-item">
+                    <img src="images/NewOverstockHigherEndSneakers.jpeg" alt="Sneakers">
+                    <div class="product-details">
+                        <h2>Sneakers</h2>
+                        <p>R250</p>
+                        <button class="add-to-cart-btn" data-name="White Sneakers" data-price="250"
+                            data-image="images/NewOverstockHigherEndSneakers.jpeg">
+                            Add to Cart
+                        </button>
+                    </div>
             </div>
+
+                <div class="product-item">
+                    <img src="images/ClearWeatherBrand.jpeg" alt="Sneakers">
+                    <div class="product-details">
+                        <h2>Clear Weather Sneakers</h2>
+                        <p>R250</p>
+                        <button class="add-to-cart-btn" data-name="White Sneakers" data-price="250"
+                            data-image="images/WhiteSneakers.jpeg">
+                            Add to Cart
+                        </button>
+                    </div>
+                </div> 
+
+                <div class="product-item">
+                    <img src="images/BusinessCasual.jpeg" alt="Casual Shoe">
+                    <div class="product-details">
+                        <h2>Business Casual</h2>
+                        <p>R250</p>
+                        <button class="add-to-cart-btn" data-name="White Sneakers" data-price="250"
+                            data-image="images/WhiteSneakers.jpeg">
+                            Add to Cart
+                        </button>
+                    </div>
+
+
+                <!-- </div> -->
+
         </section>
 
         <!-- Home Decor Section -->
         <section class="product-category" data-category="home">
             <h2 class="category-title"><i class="fas fa-home"></i> Home Decor</h2>
             <div class="product-grid">
-                <!-- Decor Items -->
                 <div class="product-item">
                     <div class="product-badge">Unique</div>
                     <img src="images/products/home/vase1.jpg" alt="Vintage Vase">
@@ -166,30 +392,9 @@
     </div>
 
     <!-- JavaScript -->
+    <script src="javascript/navbar.js"></script>
     <script src="javascript/cart.js"></script>
-    <script>
-        // Category filter functionality
-        document.querySelectorAll('.category-filter').forEach(button => {
-            button.addEventListener('click', function () {
-                // Update active button
-                document.querySelectorAll('.category-filter').forEach(btn => {
-                    btn.classList.remove('active');
-                });
-                this.classList.add('active');
-
-                const category = this.dataset.category;
-
-                // Show/hide categories
-                document.querySelectorAll('.product-category').forEach(section => {
-                    if (category === 'all' || section.dataset.category === category) {
-                        section.style.display = 'block';
-                    } else {
-                        section.style.display = 'none';
-                    }
-                });
-            });
-        });
-    </script>
+    <script src="javascript/products.js"></script>
 </body>
 
 </html>
