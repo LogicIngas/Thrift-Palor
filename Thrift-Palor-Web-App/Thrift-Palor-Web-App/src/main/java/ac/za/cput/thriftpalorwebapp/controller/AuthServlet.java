@@ -1,4 +1,4 @@
-package main.java.ac.za.cput.thriftpalorwebapp.controller;
+package ac.za.cput.thriftpalorwebapp.controller;
 
 import ac.za.cput.thriftpalorwebapp.dao.UserDAO;
 import ac.za.cput.thriftpalorwebapp.model.User;

@@ -1,4 +1,4 @@
-package main.java.ac.za.cput.thriftpalorwebapp.dao;
+package ac.za.cput.thriftpalorwebapp.dao;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -6,7 +6,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 import ac.za.cput.thriftpalorwebapp.config.DBConfig;
-import main.java.ac.za.cput.thriftpalorwebapp.model.User;
+import ac.za.cput.thriftpalorwebapp.model.User;
 
 public class UserDAO {
 
