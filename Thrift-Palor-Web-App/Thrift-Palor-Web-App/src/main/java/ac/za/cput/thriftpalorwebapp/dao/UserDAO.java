@@ -9,82 +9,45 @@ import ac.za.cput.thriftpalorwebapp.config.DBConfig;
 import main.java.ac.za.cput.thriftpalorwebapp.model.User;
 
 public class UserDAO {
-    private static final String INSERT_USER = 
-        "INSERT INTO \"User\" (username, password_hash, email, first_name, last_name, phone, role) " +
-        "VALUES (?, ?, ?, ?, ?, ?, ?)";
-    
-    private static final String FIND_BY_EMAIL = 
-        "SELECT * FROM \"User\" WHERE email = ?";
-    
-    public User create(User user) throws SQLException {
-        Connection conn = null;
-        PreparedStatement stmt = null;
-        ResultSet generatedKeys = null;
-        
-        try {
-            conn = DBConfig.getConnection();
-            stmt = conn.prepareStatement(INSERT_USER, Statement.RETURN_GENERATED_KEYS);
-            
-            stmt.setString(1, user.getUsername());
-            stmt.setString(2, user.getPasswordHash());
-            stmt.setString(3, user.getEmail());
-            stmt.setString(4, user.getFirstName());
-            stmt.setString(5, user.getLastName());
-            stmt.setString(6, user.getPhone());
-            stmt.setString(7, user.getRole().toString());
-            
-            int affectedRows = stmt.executeUpdate();
-            if (affectedRows == 0) {
-                throw new SQLException("Creating user failed, no rows affected.");
-            }
-            
-            generatedKeys = stmt.getGeneratedKeys();
-            if (generatedKeys.next()) {
-                user.setUserId(generatedKeys.getInt(1));
-            } else {
-                throw new SQLException("Creating user failed, no ID obtained.");
-            }
-            
-            return user;
-        } finally {
-            if (generatedKeys != null) generatedKeys.close();
-            if (stmt != null) stmt.close();
-            DBConfig.closeConnection(conn);
-        }
-    }
 
-    public User findByEmail(String email) throws SQLException {
-        Connection conn = null;
-        PreparedStatement stmt = null;
-        ResultSet rs = null;
-        
-        try {
-            conn = DBConfig.getConnection();
-            stmt = conn.prepareStatement(FIND_BY_EMAIL);
-            stmt.setString(1, email);
-            
-            rs = stmt.executeQuery();
-            if (rs.next()) {
-                return mapRowToUser(rs);
-            }
-            return null;
-        } finally {
-            if (rs != null) rs.close();
-            if (stmt != null) stmt.close();
-            DBConfig.closeConnection(conn);
-        }
-    }
+    // Method to create a table in the database
+     
+    String create_table_sql = "CREATE TABLE Users (\r\n" + //
+                "    user_id INT NOT NULL GENERATED ALWAYS AS IDENTITY (START WITH 1, INCREMENT BY 1),\r\n" + //
+                "    username VARCHAR(50) NOT NULL,\r\n" + //
+                "    password_hash VARCHAR(255) NOT NULL,\r\n" + //
+                "    email VARCHAR(100) NOT NULL,\r\n" + //
+                "    first_name VARCHAR(50),\r\n" + //
+                "    last_name VARCHAR(50),\r\n" + //
+                "    phone VARCHAR(20),\r\n" + //
+                "    role VARCHAR(10) CHECK (role IN ('Buyer', 'Seller', 'Admin')),\r\n" + //
+                "    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,\r\n" + //
+                "    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,\r\n" + //
+                "    PRIMARY KEY (user_id)\r\n" + //
+                ");";
 
-    private User mapRowToUser(ResultSet rs) throws SQLException {
-        User user = new User();
-        user.setUserId(rs.getInt("user_id"));
-        user.setUsername(rs.getString("username"));
-        user.setPasswordHash(rs.getString("password_hash"));
-        user.setEmail(rs.getString("email"));
-        user.setFirstName(rs.getString("first_name"));
-        user.setLastName(rs.getString("last_name"));
-        user.setPhone(rs.getString("phone"));
-        user.setRole(User.Role.valueOf(rs.getString("role")));
-        return user;
+    public boolean insertUser(String username, String passwordHash, String email, 
+                              String firstName, String lastName, String phone, String role) {
+        String sql = "INSERT INTO Users (username, password_hash, email, first_name, last_name, phone, role) " +
+                     "VALUES (?, ?, ?, ?, ?, ?, ?)";
+
+        try (Connection conn = DBConnection.getConnection();
+             PreparedStatement stmt = conn.prepareStatement(sql)) {
+             
+            stmt.setString(1, username);
+            stmt.setString(2, passwordHash); // Consider using SHA-256 or bcrypt
+            stmt.setString(3, email);
+            stmt.setString(4, firstName);
+            stmt.setString(5, lastName);
+            stmt.setString(6, phone);
+            stmt.setString(7, role);
+
+            int rows = stmt.executeUpdate();
+            return rows > 0;
+
+        } catch (Exception e) {
+            e.printStackTrace();
+            return false;
+        }
     }
 }

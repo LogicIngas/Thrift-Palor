@@ -7,10 +7,11 @@
     <link rel="stylesheet" href="css/styles.css">
     <link rel="stylesheet" href="css/navbar.css">
     <link rel="stylesheet" href="css/home.css">
+    <link rel="stylesheet" href="css/signup.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
 <body>
-    <!-- Auth Overlay -->
+    <!-- Auth Overlay ONLY -->
     <div id="auth-wall" data-show="true">
         <div class="auth-modal">
             <h2>Welcome to Thrift-Palor</h2>
@@ -25,110 +26,5 @@
             </div>
         </div>
     </div>
-
-    <!-- Main App Content -->
-    <div id="app-content" style="display:none;">
-        <nav>
-            <ul>
-                <li><a href="home.html" class="active">Home</a></li>
-                <li><a href="products.html">Products</a></li>
-                <li><a href="about.html">About</a></li>
-                <li><a href="contact.html">Contact</a></li>
-                <li>
-                    <a href="cart.html">
-                        <i class="fas fa-shopping-cart"></i>
-                        <span class="cart-count">0</span>
-                    </a>
-                </li>
-            </ul>
-        </nav>
-
-        <main>
-            <section class="hero">
-                <h1>Wear Timeless Style Clothes</h1>
-                <p>Quality pre-loved fashion at unbeatable prices</p>
-                <a href="products.html" class="thrift-btn">Shop Now</a>
-            </section>
-
-            <section class="featured-products">
-                <h2>Featured Products</h2>
-                <div class="product-grid">
-                    <div class="product-card">
-                        <img src="images/shirt.jpg" alt="Vintage Shirt" class="product-image">
-                        <div class="product-info">
-                            <h3>Vintage Flannel Shirt</h3>
-                            <span class="product-price">R120.00</span>
-                            <button class="add-to-cart-btn" 
-                                    data-name="Vintage Flannel Shirt" 
-                                    data-price="120">
-                                Add to Cart
-                            </button>
-                        </div>
-                    </div>
-                    <!-- More product cards -->
-                </div>
-            </section>
-        </main>
-
-        <footer>
-            <p>&copy; 2023 Thrift-Palor. All rights reserved.</p>
-        </footer>
-    </div>
-
-    <script src="javascript/auth.js"></script>
-    <script src="javascript/cart.js"></script>
-    <script src="javascript/scripts.js"></script>
-</body>
-</html>
-
-
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Thrift-Palor | Sign Up</title>
-    <link rel="stylesheet" href="css/navbar.css">
-    <link rel="stylesheet" href="css/login.css">
-    <link rel="stylesheet" href="css/signup.css">
-</head>
-<body>
-    <div class="auth-container">
-        <h1>SignUp/Create Account</h1>
-        <form id="signupForm">
-            <div class="form-group">
-                <label for="username">Username</label>
-                <input type="text" id="username" placeholder="e.g. TechWizard" required>
-            </div>
-            <div class="form-group">
-                <label for="firstName">First Name</label>
-                <input type="text" id="firstName" placeholder="e.g. Inganathi" required>
-            </div>
-            <div class="form-group">
-                <label for="lastName">Last Name</label>
-                <input type="text" id="lastName" placeholder="e.g. Mbobo" required>
-            </div>
-            <div class="form-group">
-                <label for="phone">Phone (SA Number)</label>
-                <input 
-                    type="tel" 
-                    id="phone" 
-                    pattern="(\+27|0)[6-8][0-9]{8}" 
-                    placeholder="e.g. +27601234567" 
-                    required
-                >
-            </div>
-            <div class="form-group">
-                <label for="email">Email</label>
-                <input type="email" id="email" placeholder="e.g. inga@example.com" required>
-            </div>
-            <div class="form-group">
-                <label for="password">Password</label>
-                <input type="password" id="password" placeholder="Minimum 8 characters" minlength="8" required>
-            </div>
-            <button type="submit" class="thrift-btn">Sign Up</button>
-        </form>
-        <p>Already have an account? <a href="login.html">Log in</a></p>
-    </div>
-    <script src="javascript/auth.js"></script>
 </body>
 </html>

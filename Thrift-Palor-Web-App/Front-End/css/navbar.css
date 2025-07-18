@@ -1,53 +1,82 @@
-/* navbar.css - Advanced Version */
-.navbar {
-    background-color: #5c3d91;
-    padding: 1rem 2rem;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    color: white;
-    box-shadow: 0 3px 12px rgba(0, 0, 0, 0.15);
-    position: sticky;
-    top: 0;
-    z-index: 1000;
+/* Hamburger toggle button styles */
+#menu-toggle {
+  position: fixed;
+  top: 15px;
+  left: 15px;
+  width: 40px;
+  height: 40px;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  z-index: 1100;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 6px;
 }
 
-.navbar h1 {
-    font-size: 1.8rem;
-    font-weight: bold;
-    margin: 0;
+#menu-toggle .bar {
+  width: 30px;
+  height: 3px;
+  background-color: #5c3d91;
+  border-radius: 2px;
+  transition: all 0.3s ease;
 }
 
-.nav-links {
-    display: flex;
-    gap: 1.5rem;
+#menu-toggle.active .bar1 {
+  transform: rotate(45deg) translate(6px, 6px);
+  background-color: #452c6f;
 }
 
-.nav-links a {
-    text-decoration: none;
-    color: #ffffff;
-    font-weight: 500;
-    font-size: 1rem;
-    position: relative;
-    padding-bottom: 4px;
-    transition: color 0.3s ease;
+#menu-toggle.active .bar2 {
+  opacity: 0;
 }
 
-.nav-links a::after {
-    content: '';
-    position: absolute;
-    width: 0%;
-    height: 2px;
-    left: 0;
-    bottom: 0;
-    background-color: white;
-    transition: width 0.3s ease;
+#menu-toggle.active .bar3 {
+  transform: rotate(-45deg) translate(7px, -7px);
+  background-color: #452c6f;
 }
 
-.nav-links a:hover::after {
-    width: 100%;
+/* Sidebar base styles */
+#sidebar {
+  position: fixed;
+  top: 0;
+  left: -260px; /* hidden */
+  width: 260px;
+  height: 100vh;
+  background-color: #5c3d91;
+  padding: 3rem 1.5rem;
+  box-shadow: 3px 0 10px rgba(0,0,0,0.15);
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  transition: left 0.3s ease;
+  z-index: 1000;
+  overflow-y: auto;
 }
 
-.nav-links a:hover {
-    color: #d1c2f1;
+#sidebar.active {
+  left: 0;
+}
+
+#sidebar a {
+  color: #fff;
+  font-weight: 600;
+  text-decoration: none;
+  font-size: 1.1rem;
+  padding-bottom: 0.3rem;
+  border-bottom: 1px solid rgba(255,255,255,0.2);
+  transition: color 0.3s ease;
+}
+
+#sidebar a:hover {
+  color: #d1c2f1;
+}
+
+/* Optional: Push content when sidebar is open on desktop */
+@media (min-width: 768px) {
+  #sidebar.active ~ #page-content {
+    margin-left: 260px;
+    transition: margin-left 0.3s ease;
+  }
 }
