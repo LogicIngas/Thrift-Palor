@@ -5,6 +5,13 @@
     "version": "0.2.0",
     "configurations": [
         {
+            "type": "java",
+            "name": "ThriftPalorWebApp",
+            "request": "launch",
+            "mainClass": "ac.za.cput.thriftpalorwebapp.ThriftPalorWebApp",
+            "projectName": "ThriftPalorWebApp"
+        },
+        {
             "type": "chrome",
             "request": "launch",
             "name": "Launch Chrome against localhost",
