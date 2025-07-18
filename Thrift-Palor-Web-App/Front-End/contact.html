@@ -10,14 +10,31 @@
     <link rel="stylesheet" href="css/contact.css">
 </head>
 <body>
-    <nav>
+    <!-- <nav>
         <ul>
             <li><a href="home.html">Home</a></li>
             <li><a href="about.html">About</a></li>
             <li><a href="products.html">Products</a></li>
             <li><a href="contact.html" class="active">Contact</a></li>
         </ul>
+    </nav> -->
+<nav class="navbar">
+        <div class="logo">Thrift Palor</div>
+        <div class="menu-toggle" id="menu-toggle" aria-label="Open navigation" tabindex="0">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
     </nav>
+    <ul class="nav-links" id="nav-links">
+        <li><a href="home.html">Home</a></li>
+        <li><a href="products.html">Products</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="contact.html">Contact</a></li>
+        <li><a href="login.html">Login</a></li>
+        <li><a href="signup.html">Sign Up</a></li>
+    </ul>
+    <div class="container">
 
     <main class="contact-container">
         <h1>Contact Thrift-Palor</h1>
@@ -33,9 +50,9 @@
                 </address>
                 
                 <div class="social-links">
-                    <a href="#" class="social-icon">Facebook</a>
-                    <a href="#" class="social-icon">Twitter</a>
-                    <a href="#" class="social-icon">Instagram</a>
+                    <a href="https://www.facebook.com/" class="social-icon">Facebook</a>
+                    <a href="https://x.com/" class="social-icon">Twitter</a>
+                    <a href="https://www.instagram.com/" class="social-icon">Instagram</a>
                 </div>
             </section>
             
@@ -73,5 +90,6 @@
     </footer>
 
     <script src="javascript/contact.js"></script>
+    <script src="javascript/navbar.js"></script>
 </body>
 </html>
