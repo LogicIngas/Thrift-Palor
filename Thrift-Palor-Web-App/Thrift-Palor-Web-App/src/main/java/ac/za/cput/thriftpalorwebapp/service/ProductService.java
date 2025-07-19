@@ -1,4 +1,4 @@
-package main.java.ac.za.cput.thriftpalorwebapp.service;
+package ac.za.cput.thriftpalorwebapp.service;
 
 public class ProductService {
     

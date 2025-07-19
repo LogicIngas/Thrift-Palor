@@ -2,21 +2,13 @@ package ac.za.cput.thriftpalorwebapp.util;
 
 import org.mindrot.jbcrypt.BCrypt;
 
-
-
-
-public class SecurityUtil {
-    private static final int WORKLOAD = 12;
-
+public class PasswordUtil {
+    
     public static String hashPassword(String plainTextPassword) {
-        String salt = BCrypt.gensalt(WORKLOAD);
-        return BCrypt.hashpw(plainTextPassword, salt);
+        return BCrypt.hashpw(plainTextPassword, BCrypt.gensalt(12));
     }
-
+    
     public static boolean checkPassword(String plainTextPassword, String hashedPassword) {
-        if (hashedPassword == null || !hashedPassword.startsWith("$2a$")) {
-            return false;
-        }
         return BCrypt.checkpw(plainTextPassword, hashedPassword);
     }
 }

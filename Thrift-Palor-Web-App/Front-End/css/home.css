@@ -1,4 +1,101 @@
-/* home.css - Enhanced Version */
+/* --- Navbar & Hamburger Styles --- */
+.navbar {
+    width: 100%;
+    background: #5c3d91;
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 30px;
+    height: 60px;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+.logo {
+    font-size: 1.7rem;
+    font-weight: bold;
+    letter-spacing: 2px;
+    color: #fff;
+}
+.menu-toggle {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 32px;
+    height: 32px;
+    cursor: pointer;
+    z-index: 102;
+    background: none;
+    border: none;
+}
+.menu-toggle span {
+    height: 4px;
+    width: 100%;
+    background: #fff;
+    margin: 5px 0;
+    border-radius: 2px;
+    transition: 0.4s;
+    display: block;
+}
+.menu-toggle.open span:nth-child(1) {
+    transform: rotate(45deg) translate(6px, 6px);
+}
+.menu-toggle.open span:nth-child(2) {
+    opacity: 0;
+}
+.menu-toggle.open span:nth-child(3) {
+    transform: rotate(-45deg) translate(7px, -7px);
+}
+.nav-links {
+    position: fixed;
+    top: 0;
+    right: -100vw;
+    width: 220px;
+    height: 100vh;
+    background: #5c3d91;
+    box-shadow: -2px 0 10px rgba(92,61,145,0.10);
+    list-style: none;
+    margin: 0;
+    padding: 80px 0 0 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    z-index: 101;
+    transition: right 0.4s;
+}
+.nav-links.open {
+    right: 0;
+}
+.nav-links li {
+    margin: 18px 0;
+    text-align: center;
+}
+.nav-links li a {
+    color: #fff;
+    text-decoration: none;
+    font-size: 1.13rem;
+    font-weight: 500;
+    padding: 12px 18px;
+    border-radius: 6px;
+    display: block;
+    transition: background 0.2s, color 0.2s;
+}
+.nav-links li a:hover,
+.nav-links li a:focus {
+    background: #ede7f6;
+    color: #5c3d91;
+}
+@media (min-width: 901px) {
+    .nav-links {
+        right: -100vw;
+    }
+    .nav-links.open {
+        right: 0;
+    }
+}
+
+/* --- Auth Overlay Styles --- */
 #auth-wall {
   position: fixed;
   inset: 0;
@@ -45,7 +142,7 @@
   margin-top: 2rem;
 }
 
-/* Hero Section */
+/* --- Hero Section --- */
 .hero {
   padding: 5rem 1.5rem;
   background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('../images/hero-bg.jpg') center/cover no-repeat;
@@ -68,7 +165,7 @@
   color: #e0e0e0;
 }
 
-/* Product Grid */
+/* --- Product Grid --- */
 .featured-products {
   padding: 3rem 1rem;
   max-width: 1200px;
@@ -115,9 +212,7 @@
   color: #333;
 }
 
-
-/* .....................................  */
-/* home.css - Advanced Version */
+/* --- Advanced Home Styles --- */
 body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     background: linear-gradient(to top right, #f5f6fa, #ffffff);
