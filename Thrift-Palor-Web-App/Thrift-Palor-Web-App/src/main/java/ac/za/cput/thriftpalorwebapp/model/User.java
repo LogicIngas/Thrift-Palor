@@ -1,4 +1,4 @@
-package main.java.ac.za.cput.thriftpalorwebapp.model;
+package ac.za.cput.thriftpalorwebapp.model;
 
 public class User {
     
