@@ -5,9 +5,9 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 
 public class DBConnection {
-    private static final String URL = "jdbc:derby://localhost:1527/thriftdb;create=true";
-    private static final String USER = "app";
-    private static final String PASS = "app";
+    private static final String URL = "jdbc:derby://localhost:1527/thriftdb";
+    private static final String USER = "administrator";
+    private static final String PASS = "admin";
 
     static {
         try {
