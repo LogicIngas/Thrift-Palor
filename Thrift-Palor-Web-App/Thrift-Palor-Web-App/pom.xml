@@ -4,8 +4,8 @@
     <groupId>ac.za.cput</groupId>
     <artifactId>ThriftPalorWebApp</artifactId>
     <version>1.0-SNAPSHOT</version>
-    <packaging>war</packaging> <!-- Changed from jar to war for web application -->
-    <!-- <packaging>jar</packaging>  -->
+    <packaging>war</packaging>  Changed from jar to war for web application 
+    <!--<packaging>jar</packaging>-->  
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -23,12 +23,13 @@
             <version>10.14.2.0</version>
         </dependency>
 
-        <!-- Jakarta EE (formerly Java EE) for servlets -->
+        
+        <!-- Jakarta EE (Servlet API) - for local development -->
         <dependency>
             <groupId>jakarta.servlet</groupId>
             <artifactId>jakarta.servlet-api</artifactId>
             <version>${jakarta.servlet.version}</version>
-            <scope>provided</scope>
+            <scope>compile</scope> <!-- changed from provided -->
         </dependency>
 
         <!-- JSON Processing -->

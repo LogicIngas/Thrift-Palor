@@ -1,5 +1,7 @@
 package ac.za.cput.thriftpalorwebapp.util;
 
+import org.mindrot.jbcrypt.BCrypt;
+
 
 
 
