@@ -73,6 +73,12 @@
         </dependency>
     </dependencies>
 
+    <dependency>
+        <groupId>mysql</groupId>
+        <artifactId>mysql-connector-java</artifactId>
+        <version>8.0.33</version>
+    </dependency>
+
     <build>
         <finalName>ThriftPalorWebApp</finalName>
         <plugins>

@@ -5,18 +5,20 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 
 public class DBConnection {
-    private static final String URL = "jdbc:derby://localhost:1527/thriftdb";
-    private static final String USER = "administrator";
-    private static final String PASS = "admin";
 
-    static {
-        try {
-            // Load Derby JDBC driver
-            Class.forName("org.apache.derby.jdbc.ClientDriver");
-        } catch (ClassNotFoundException e) {
-            throw new RuntimeException("Failed to load Derby JDBC driver", e);
-        }
+        private static final String URL = "jdbc:mysql://localhost:3306/thriftdb";
+        private static final String USER = "root";
+        private static final String PASS = "admin";
+
+static {
+    try {
+        // Load MySQL JDBC driver
+        Class.forName("com.mysql.cj.jdbc.Driver");
+    } catch (ClassNotFoundException e) {
+        throw new RuntimeException("Failed to load MySQL JDBC driver", e.getMessage());
     }
+}
+
 
     public static Connection getConnection() throws SQLException {
         return DriverManager.getConnection(URL, USER, PASS);

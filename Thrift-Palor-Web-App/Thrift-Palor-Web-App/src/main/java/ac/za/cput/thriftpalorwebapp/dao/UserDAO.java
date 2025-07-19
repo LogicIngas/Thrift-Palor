@@ -8,18 +8,21 @@ import java.sql.SQLException;
 import java.sql.Statement;
 
 public class UserDAO {
-    private static final String CREATE_TABLE_SQL = "CREATE TABLE Users ("
-            + "user_id INT NOT NULL GENERATED ALWAYS AS IDENTITY (START WITH 1, INCREMENT BY 1),"
-            + "username VARCHAR(50) NOT NULL UNIQUE,"
-            + "password_hash VARCHAR(255) NOT NULL,"
-            + "email VARCHAR(100) NOT NULL UNIQUE,"
-            + "first_name VARCHAR(50),"
-            + "last_name VARCHAR(50),"
-            + "phone VARCHAR(20),"
-            + "role VARCHAR(10) CHECK (role IN ('Buyer', 'Seller', 'Admin')),"
-            + "created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,"
-            + "updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,"
-            + "PRIMARY KEY (user_id))";
+
+    private static final String CREATE_TABLE_SQL =
+    "CREATE TABLE Users (" +
+    "user_id INT NOT NULL AUTO_INCREMENT," +
+    "username VARCHAR(50) NOT NULL UNIQUE," +
+    "password_hash VARCHAR(255) NOT NULL," +
+    "email VARCHAR(100) NOT NULL UNIQUE," +
+    "first_name VARCHAR(50)," +
+    "last_name VARCHAR(50)," +
+    "phone VARCHAR(20)," +
+    "role ENUM('Buyer', 'Seller', 'Admin')," +
+    "created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP," +
+    "updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP," +
+    "PRIMARY KEY (user_id)" +
+    ")";
 
     public void createTable() throws SQLException {
         Connection conn = null;
