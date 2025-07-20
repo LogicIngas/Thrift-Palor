@@ -8,5 +8,9 @@
  * @author User
  */
 public class NewClass1 {
+
+    public NewClass1() {
+        System.out.println("Hello world!");
+    }
     
 }
