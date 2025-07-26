@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Single Product Info</title>
     <link rel="stylesheet" href="./css/style.css" type="text/css">
+    <link rel="stylesheet" href="./css/cart.css" type="text/css">
     <!-- FontAwesome Link -->
     <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" />
 </head>
@@ -18,6 +19,7 @@
                 <li><a href="AboutUs.html">About Us</a></li>
                 <li><a href="Contact.html">Contact</a></li>
                 <li><a href="Payment.html">Payment</a></li>
+                <li><a id="cart-icon" href="#"><i class="fas fa-shopping-cart"></i></a></li>
             </ul>
         </div>
     </section>
@@ -48,7 +50,6 @@
             <h2>$25</h2>
             <h4>Product Details</h4>
             <span>Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolor facere explicabo, debitis delectus culpa aliquid laudantium libero provident numquam molestiae ullam quos iure, laboriosam, officiis sequi eveniet magnam nostrum quaerat. Lorem ipsum dolor, sit amet consectetur adipisicing elit. Nostrum reprehenderit deleniti nulla, rem perspiciatis incidunt velit ducimus. Ipsa unde modi mollitia error deleniti. Quam autem sint maxime quia. Corrupti, ad!</span>
-
         </div>
     </section>
 
@@ -78,6 +79,20 @@
         </div>
     </footer>
     
+    <!-- Cart Sidebar -->
+    <div id="cart-sidebar">
+        <div class="cart-header">
+            <h2>Your Cart</h2>
+            <button id="close-cart"><i class="fas fa-times"></i></button>
+        </div>
+        <div id="cart-items"></div>
+        <div class="cart-footer">
+            <div class="cart-total">Total: R<span id="cart-total">0.00</span></div>
+            <button id="proceed-to-payment">Proceed to Payment</button>
+        </div>
+    </div>
+
+    <script src="./js/cart.js"></script>
     <script src="./js/SingleProduct.js"></script>
 </body>
 </html>
