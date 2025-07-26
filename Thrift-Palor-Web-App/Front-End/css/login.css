@@ -1,215 +1,282 @@
 /*GOOGLE FONTS*/
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap");
 
-/* General Body and Font Styles */
-body {
-    font-family: Arial, sans-serif; /* Or your preferred font */
-    margin: 0;
-    padding: 0;
-    background-color: #f0f2f5; /* Light grey background similar to the image */
-    display: flex;
-    flex-direction: column;
-    min-height: 100vh; /* Ensures footer sticks to the bottom */
+/* CSS variables */
+:root {
+  --white-color: hsl(0, 0%, 100%);
+  --black-color: hsl(0, 0%, 0%);
+  --primary-color: #471c3c;
+  --secondary-color: #554348;
+  --accent-color: #efa00b;
+  --body-font: "Poppins", sans-serif;
+  --h1-font-size: 2rem;
+  --normal-font-size: 1rem;
+  --small-font-size: .813rem;
 }
 
-/* Main Container for Login */
-.login-container {
-    flex-grow: 1; /* Allows the login content to take up available space */
-    display: flex;
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+body,
+input,
+button {
+  font-family: var(--body-font);
+  font-size: var(--normal-font-size);
+}
+
+a {
+  text-decoration: none;
+
+
+
+
+
+}
+
+img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+
+
+
+
+}
+
+.login {
+  position: relative;
+  height: 100vh;
+  display: grid;
+  align-items: center;
+  background-color: var(--primary-color);
+}
+
+.login_bg {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+
+.login_form {
+  position: relative;
+  margin-inline: 1.5rem;
+  background-color: var(--secondary-color);
+  border: 2px solid hsla(0, 0%, 100%, .7);
+  padding: 2.5rem 1rem;
+  color: var(--white-color);
+  border-radius: 1rem;
+  backdrop-filter: blur(16px);
+}
+
+.login_title {
+  text-align: center;
+  font-size: var(--h1-font-size);
+  margin-bottom: 1.25rem;
+  color: var(--accent-color);
+}
+
+.login_inputs, 
+.login_box {
+  display: grid;
+
+
+}
+
+.login_inputs {
+  row-gap: 1.25rem;
+  margin-bottom: 1rem;
+}
+
+.login_box {
+  grid-template-columns: 1fr max-content;
+  column-gap: .75rem;
+  align-items: center;
+  border: 2px solid var(--accent-color);
+  padding-inline: 1.25rem;
+  border-radius: 4rem;
+}
+
+.login_input, 
+.login_button {
+  border: none;
+  outline: none;
+
+
+
+}
+
+.login_input {
+  width: 100%;
+  background: none;
+  color: var(--white-color);
+  padding-block: 1rem;
+
+}
+
+.login_input::placeholder {
+  color: hsla(0, 0%, 100%, .7);
+}
+
+.login_box i {
+  font-size: 1.25rem;
+  color: var(--accent-color);
+
+
+
+
+
+
+
+}
+
+.login_check, 
+.login_check-box {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.login_check {
+  margin-bottom: 1rem;
+  font-size: var(--small-font-size);
+
+
+
+
+}
+
+.login_check-box {
+  column-gap: .5rem;
+
+
+
+
+
+
+}
+
+.login_check-input {
+  width: 1rem;
+  height: 1rem;
+  accent-color: var(--accent-color);
+}
+
+.login_forgot {
+  color: var(--white-color);
+}
+
+.login_forgot:hover {
+  color: var(--accent-color);
+  text-decoration: underline;
+
+
+}
+
+.login_button {
+  width: 100%;
+  padding: 1rem;
+  margin-bottom: 1rem;
+  background-color: var(--accent-color);
+  border-radius: 4rem;
+  color: var(--primary-color);
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.login_button:hover {
+  background-color: #d18f0a;
+  transform: translateY(-2px);
+
+}
+
+.login_register {
+  font-size: var(--small-font-size);
+  text-align: center;
+}
+
+.login_register a {
+  color: var(--accent-color);
+  font-weight: 500;
+
+
+
+}
+
+.login_register a:hover {
+  text-decoration: underline;
+
+
+
+
+
+}
+
+@media screen and (min-width: 576px) {
+  .login {
     justify-content: center;
-    align-items: center;
-    padding: 20px;
+  }
+  .login_form {
+    width: 420px;
+    padding-inline: 2.5rem;
+  }
+  .login_title {
+    margin-bottom: 2rem;
+  }
 }
 
-.login-box {
-    background-color: #fff;
-    padding: 40px;
-    border-radius: 8px;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-    text-align: center;
-    width: 100%;
-    max-width: 400px; /* Adjust as needed */
-}
-
-.logo-text {
-    font-size: 2.2em;
-    font-weight: bold;
-    color: #333; /* Dark grey */
-    margin-bottom: 5px;
-}
-
-.tagline {
-    font-size: 0.9em;
-    color: #666;
-    margin-top: 0;
-    margin-bottom: 30px;
-}
-
-h2 {
-    font-size: 1.8em;
-    color: #333;
-    margin-bottom: 10px;
-}
-
-.instruction {
-    font-size: 0.9em;
-    color: #555;
-    margin-bottom: 25px;
-}
-
-/* Form Styling */
-.login-form {
+/* Navbar */
+#header {
     display: flex;
-    flex-direction: column;
-    gap: 15px; /* Spacing between form groups */
-}
-
-.form-group {
-    text-align: left;
-}
-
-.form-group label {
-    display: block;
-    margin-bottom: 8px;
-    font-size: 0.9em;
-    color: #444;
-    font-weight: bold; /* Make labels bold like in the image */
-}
-
-.form-group input {
-    width: 100%;
-    padding: 12px;
-    border: 1px solid #ddd;
-    border-radius: 5px;
-    font-size: 1em;
-    box-sizing: border-box; /* Include padding in element's total width */
-}
-
-.forgot-password {
-    align-self: flex-end; /* Aligns to the right */
-    font-size: 0.85em;
-    color: #007bff; /* Standard blue link color */
-    text-decoration: none;
-    margin-top: -5px; /* Pulls it closer to the password field */
-}
-
-.forgot-password:hover {
-    text-decoration: underline;
-}
-
-.login-button {
-    background-color: #007bff; /* Blue button */
-    color: #fff;
-    padding: 12px 20px;
-    border: none;
-    border-radius: 5px;
-    font-size: 1.1em;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-    margin-top: 20px; /* Space above button */
-}
-
-.login-button:hover {
-    background-color: #0056b3; /* Darker blue on hover */
-}
-
-/* OR Divider */
-.or-divider {
-    position: relative;
-    text-align: center;
-    margin: 30px 0;
-    color: #aaa;
-    font-size: 0.9em;
-}
-
-.or-divider::before,
-.or-divider::after {
-    content: '';
-    position: absolute;
-    top: 50%;
-    width: 40%;
-    height: 1px;
-    background-color: #eee;
-}
-
-.or-divider::before {
+    align-items: center;
+    justify-content: space-between;
+    padding: 20px 80px;
+    background-color: var(--primary-color);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    z-index: 999;
+    position: sticky;
+    top: 0;
     left: 0;
 }
 
-.or-divider::after {
-    right: 0;
-}
+#navbar {
 
-.or-divider span {
-    background-color: #fff;
-    padding: 0 10px;
-    position: relative;
-    z-index: 1;
-}
-
-/* Sign Up Text */
-.signup-text {
-    font-size: 0.9em;
-    color: #555;
-}
-
-.signup-link {
-    color: #007bff;
-    text-decoration: none;
-    font-weight: bold;
-}
-
-.signup-link:hover {
-    text-decoration: underline;
-}
-
-/* Footer Styles */
-.site-footer {
-    background-color: #ff9900; /* Orange background as in the image */
-    color: #fff;
-    padding: 30px 0;
-    font-size: 0.9em;
-}
-
-.footer-content {
-    display: flex;
-    justify-content: space-around;
-    flex-wrap: wrap; /* Allows sections to wrap on smaller screens */
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 0 20px;
-}
-
-.footer-section {
-    flex: 1; /* Distribute space evenly */
-    min-width: 150px; /* Minimum width for each section before wrapping */
-    margin: 10px;
-}
-
-.footer-section p {
-    margin: 5px 0;
     display: flex;
     align-items: center;
+    justify-content: center;
 }
 
-.footer-section i {
-    margin-right: 8px;
-    font-size: 1.1em;
+#navbar li {
+    list-style: none;
+    padding: 0 20px;
+    position: relative;
 }
 
-/* Responsive Adjustments (Optional but Recommended) */
-@media (max-width: 768px) {
-    .login-box {
-        padding: 30px;
-        margin: 20px;
-    }
+#navbar li a {
+    text-decoration: none;
+    font-size: 16px;
+    font-weight: 600;
+    color: var(--white-color);
+    transition: 0.3s ease;
+}
 
-    .footer-content {
-        flex-direction: column;
-        text-align: center;
-    }
+#navbar li a:hover,
+#navbar li a.active {
+    color: var(--accent-color);
+}
 
-    .footer-section {
-        margin-bottom: 20px;
-    }
+#navbar li a.active::after,
+#navbar li a:hover::after {
+    content: "";
+    width: 30%;
+    height: 2px;
+    background-color: var(--accent-color);
+    position: absolute;
+    bottom: -4px;
+    left: 20px;
 }
