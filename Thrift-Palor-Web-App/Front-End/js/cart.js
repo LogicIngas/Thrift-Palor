@@ -11,7 +11,8 @@ document.addEventListener('DOMContentLoaded', function() {
     // Add click event to all cart buttons
     document.querySelectorAll('.pro .cart').forEach(button => {
         button.addEventListener('click', function(e) {
-            e.stopPropagation(); // Prevent the product click event
+            e.preventDefault();
+            e.stopPropagation();
             const productElement = this.closest('.pro');
             addToCart(productElement);
         });
@@ -31,6 +32,8 @@ document.addEventListener('DOMContentLoaded', function() {
             localStorage.setItem('cart', JSON.stringify(cart));
             localStorage.setItem('cartTotal', cartTotalElement.textContent);
             window.location.href = 'Payment.html';
+        } else {
+            alert('Your cart is empty. Please add items before proceeding to payment.');
         }
     });
 
@@ -38,7 +41,10 @@ document.addEventListener('DOMContentLoaded', function() {
         const productImg = productElement.querySelector('img').src;
         const productBrand = productElement.querySelector('.des span').textContent;
         const productName = productElement.querySelector('.des h5').textContent;
-        const productPrice = parseFloat(productElement.querySelector('.des h4').textContent.replace('$', ''));
+        
+        // Extract price (remove 'R' and any whitespace)
+        const priceText = productElement.querySelector('.des h4').textContent;
+        const productPrice = parseFloat(priceText.replace(/[^0-9.]/g, ''));
         
         // Check if product already in cart
         const existingItem = cart.find(item => item.name === productName);
@@ -64,6 +70,9 @@ document.addEventListener('DOMContentLoaded', function() {
         
         // Show cart count
         updateCartCount();
+        
+        // Show added notification
+        showNotification(`${productName} added to cart`);
     }
 
     function updateCart() {
@@ -82,9 +91,9 @@ document.addEventListener('DOMContentLoaded', function() {
                 <div class="cart-item-info">
                     <span>${item.brand}</span>
                     <h5>${item.name}</h5>
-                    <div>$${item.price.toFixed(2)} x ${item.quantity}</div>
+                    <div>R${item.price.toFixed(2)} x ${item.quantity}</div>
                 </div>
-                <div class="cart-item-price">$${(item.price * item.quantity).toFixed(2)}</div>
+                <div class="cart-item-price">R${(item.price * item.quantity).toFixed(2)}</div>
                 <button class="remove-item" data-index="${index}"><i class="fas fa-trash"></i></button>
             `;
             
@@ -98,9 +107,11 @@ document.addEventListener('DOMContentLoaded', function() {
         document.querySelectorAll('.remove-item').forEach(button => {
             button.addEventListener('click', function() {
                 const index = parseInt(this.getAttribute('data-index'));
+                const removedItem = cart[index].name;
                 cart.splice(index, 1);
                 updateCart();
                 updateCartCount();
+                showNotification(`${removedItem} removed from cart`);
                 if (cart.length === 0 && cartVisible) {
                     toggleCart();
                 }
@@ -111,9 +122,9 @@ document.addEventListener('DOMContentLoaded', function() {
     function toggleCart() {
         cartVisible = !cartVisible;
         if (cartVisible) {
-            cartSidebar.classList.add('visible');
+            cartSidebar.style.right = '0';
         } else {
-            cartSidebar.classList.remove('visible');
+            cartSidebar.style.right = '-400px';
         }
     }
 
@@ -133,10 +144,21 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     }
 
-    // Show cart when scrolling
-    window.addEventListener('scroll', function() {
-        if (window.scrollY > 100 && cart.length > 0 && !cartVisible) {
-            toggleCart();
-        }
-    });
+    function showNotification(message) {
+        const notification = document.createElement('div');
+        notification.className = 'cart-notification';
+        notification.textContent = message;
+        document.body.appendChild(notification);
+        
+        setTimeout(() => {
+            notification.classList.add('show');
+        }, 10);
+        
+        setTimeout(() => {
+            notification.classList.remove('show');
+            setTimeout(() => {
+                notification.remove();
+            }, 300);
+        }, 3000);
+    }
 });
