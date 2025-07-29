@@ -7,8 +7,8 @@ import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import java.io.BufferedReader;
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.sql.SQLException;
 
 @WebServlet("/signup")
@@ -18,37 +18,53 @@ public class SignupServlet extends HttpServlet {
     @Override
     public void init() throws ServletException {
         userDao = new UserDAO();
+        try {
+            userDao.initializeDatabase();
+        } catch (SQLException e) {
+            throw new ServletException("Failed to initialize database", e);
+        }
     }
 
     @Override
-    protected void doPost(HttpServletRequest req, HttpServletResponse resp) 
-            throws ServletException, IOException {
-        
+    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         resp.setContentType("application/json");
-        PrintWriter out = resp.getWriter();
+        resp.setCharacterEncoding("UTF-8");
         
         try {
-            String username = req.getParameter("username");
-            String password = req.getParameter("password");
-            String email = req.getParameter("email");
-            String firstName = req.getParameter("firstName");
-            String lastName = req.getParameter("lastName");
-            String phone = req.getParameter("phone");
-
-            User user = new User(username, password, email, firstName, lastName, phone);
+            StringBuilder sb = new StringBuilder();
+            BufferedReader reader = req.getReader();
+            String line;
+            while ((line = reader.readLine()) != null) {
+                sb.append(line);
+            }
+            
+            String json = sb.toString();
+            json = json.replaceAll("[{}\"]", "");
+            String[] keyValues = json.split(",");
+            
+            User user = new User();
+            for (String keyValue : keyValues) {
+                String[] parts = keyValue.split(":");
+                String key = parts[0].trim();
+                String value = parts[1].trim();
+                
+                switch (key) {
+                    case "username": user.setUsername(value); break;
+                    case "password": user.setPasswordHash(value); break;
+                    case "email": user.setEmail(value); break;
+                    case "firstName": user.setFirstName(value); break;
+                    case "lastName": user.setLastName(value); break;
+                    case "phone": user.setPhone(value); break;
+                }
+            }
+            
             User createdUser = userDao.createUser(user);
             
-            out.print(String.format(
-                "{\"success\": true, \"userId\": %d}", 
-                createdUser.getUserId()
-            ));
+            resp.getWriter().print(String.format("{\"success\": true, \"message\": \"Account created successfully\", \"userId\": %d}", createdUser.getUserId()));
             resp.setStatus(HttpServletResponse.SC_CREATED);
             
-        } catch (SQLException e) {
-            out.print(String.format(
-                "{\"success\": false, \"message\": \"%s\"}", 
-                e.getMessage()
-            ));
+        } catch (Exception e) {
+            resp.getWriter().print(String.format("{\"success\": false, \"message\": \"%s\"}", e.getMessage()));
             resp.setStatus(HttpServletResponse.SC_BAD_REQUEST);
         }
     }
