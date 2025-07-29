@@ -15,7 +15,7 @@ public class DBConnection {
     public static Connection getConnection() throws SQLException {
         try {
             Connection conn = DriverManager.getConnection(DB_URL, USERNAME, PASSWORD);
-            conn.setAutoCommit(false); // Enable transaction management
+            conn.setAutoCommit(false);
             return conn;
         } catch (SQLException e) {
             LOGGER.log(Level.SEVERE, "Failed to create database connection", e);
@@ -27,7 +27,7 @@ public class DBConnection {
         if (conn != null) {
             try {
                 if (!conn.isClosed()) {
-                    conn.rollback(); // Rollback any pending transactions
+                    conn.rollback();
                     conn.close();
                 }
             } catch (SQLException e) {

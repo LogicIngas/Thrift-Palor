@@ -3,6 +3,7 @@ package ac.za.cput.thriftpalorwebapp.domain;
 import java.sql.Timestamp;
 
 public class User {
+
     private int userId;
     private String username;
     private String passwordHash;
@@ -16,8 +17,7 @@ public class User {
     public User() {
     }
 
-    public User(String username, String passwordHash, String email, 
-               String firstName, String lastName, String phone) {
+    public User(String username, String passwordHash, String email, String firstName, String lastName, String phone) {
         this.username = username;
         this.passwordHash = passwordHash;
         this.email = email;
@@ -26,7 +26,6 @@ public class User {
         this.phone = phone;
     }
 
-    // Getters and Setters
     public int getUserId() {
         return userId;
     }
