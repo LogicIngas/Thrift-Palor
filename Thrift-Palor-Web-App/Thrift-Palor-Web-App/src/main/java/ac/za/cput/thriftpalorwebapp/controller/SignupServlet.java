@@ -7,9 +7,8 @@ import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
-import jakarta.json.Json;
-import jakarta.json.JsonObject;
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.sql.SQLException;
 
 @WebServlet("/signup")
@@ -22,35 +21,35 @@ public class SignupServlet extends HttpServlet {
     }
 
     @Override
-    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        JsonObject jsonRequest = Json.createReader(req.getReader()).readObject();
-        JsonObject jsonResponse;
+    protected void doPost(HttpServletRequest req, HttpServletResponse resp) 
+            throws ServletException, IOException {
+        
         resp.setContentType("application/json");
-
+        PrintWriter out = resp.getWriter();
+        
         try {
-            User user = new User(
-                jsonRequest.getString("username"),
-                jsonRequest.getString("password"),
-                jsonRequest.getString("email"),
-                jsonRequest.getString("firstName"),
-                jsonRequest.getString("lastName"),
-                jsonRequest.getString("phone")
-            );
+            String username = req.getParameter("username");
+            String password = req.getParameter("password");
+            String email = req.getParameter("email");
+            String firstName = req.getParameter("firstName");
+            String lastName = req.getParameter("lastName");
+            String phone = req.getParameter("phone");
 
+            User user = new User(username, password, email, firstName, lastName, phone);
             User createdUser = userDao.createUser(user);
-            jsonResponse = Json.createObjectBuilder()
-                .add("success", true)
-                .add("userId", createdUser.getUserId())
-                .build();
+            
+            out.print(String.format(
+                "{\"success\": true, \"userId\": %d}", 
+                createdUser.getUserId()
+            ));
             resp.setStatus(HttpServletResponse.SC_CREATED);
+            
         } catch (SQLException e) {
-            jsonResponse = Json.createObjectBuilder()
-                .add("success", false)
-                .add("message", e.getMessage())
-                .build();
+            out.print(String.format(
+                "{\"success\": false, \"message\": \"%s\"}", 
+                e.getMessage()
+            ));
             resp.setStatus(HttpServletResponse.SC_BAD_REQUEST);
         }
-
-        resp.getWriter().write(jsonResponse.toString());
     }
 }
