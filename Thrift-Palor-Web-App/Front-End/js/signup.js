@@ -9,37 +9,66 @@ document.getElementById('signupForm').addEventListener('submit', async function(
         phone: document.getElementById('phone').value.replace(/\D/g, ''),
         password: document.getElementById('password').value
     };
-    
+
     if (userData.password !== document.getElementById('confirmPassword').value) {
-        alert('Passwords do not match!');
+        showError('Passwords do not match!');
         return;
     }
     
     if (userData.password.length < 8) {
-        alert('Password must be at least 8 characters long');
+        showError('Password must be at least 8 characters long');
         return;
     }
-    
+
     try {
-        const response = await fetch('/signup', {
+        const response = await fetch('http://localhost:8080/ThriftParlorWebApp/signup', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
             },
             body: JSON.stringify(userData)
         });
-        
-        const data = await response.json();
-        
+
         if (!response.ok) {
-            throw new Error(data.message || 'Signup failed');
+            const errorData = await response.json();
+            throw new Error(errorData.message || 'Registration failed');
         }
-        
-        alert(data.message);
-        window.location.href = '/Login.html';
+
+        const data = await response.json();
+        showSuccess(data.message);
+        setTimeout(() => window.location.href = 'Login.html', 1500);
         
     } catch (error) {
+        showError(error.message);
         console.error('Signup error:', error);
-        alert(error.message || 'An error occurred during signup');
     }
 });
+
+function showError(message) {
+    const errorElement = document.getElementById('error-message') || createMessageElement('error-message');
+    errorElement.textContent = message;
+    errorElement.style.display = 'block';
+}
+
+function showSuccess(message) {
+    const successElement = document.getElementById('success-message') || createMessageElement('success-message');
+    successElement.textContent = message;
+    successElement.style.display = 'block';
+}
+
+function createMessageElement(id) {
+    const element = document.createElement('div');
+    element.id = id;
+    element.style.padding = '10px';
+    element.style.margin = '10px 0';
+    element.style.borderRadius = '4px';
+    if (id === 'error-message') {
+        element.style.backgroundColor = '#ffebee';
+        element.style.color = '#c62828';
+    } else {
+        element.style.backgroundColor = '#e8f5e9';
+        element.style.color = '#2e7d32';
+    }
+    document.querySelector('.login_form').prepend(element);
+    return element;
+}

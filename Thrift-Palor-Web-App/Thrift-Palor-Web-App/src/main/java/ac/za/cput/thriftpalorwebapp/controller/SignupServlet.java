@@ -29,6 +29,9 @@ public class SignupServlet extends HttpServlet {
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         resp.setContentType("application/json");
         resp.setCharacterEncoding("UTF-8");
+        resp.setHeader("Access-Control-Allow-Origin", "*");
+        resp.setHeader("Access-Control-Allow-Methods", "POST");
+        resp.setHeader("Access-Control-Allow-Headers", "Content-Type");
         
         try {
             StringBuilder sb = new StringBuilder();
@@ -38,11 +41,9 @@ public class SignupServlet extends HttpServlet {
                 sb.append(line);
             }
             
-            String json = sb.toString();
-            json = json.replaceAll("[{}\"]", "");
-            String[] keyValues = json.split(",");
-            
             User user = new User();
+            String[] keyValues = sb.toString().replaceAll("[{}\"]", "").split(",");
+            
             for (String keyValue : keyValues) {
                 String[] parts = keyValue.split(":");
                 String key = parts[0].trim();
@@ -59,13 +60,11 @@ public class SignupServlet extends HttpServlet {
             }
             
             User createdUser = userDao.createUser(user);
-            
-            resp.getWriter().print(String.format("{\"success\": true, \"message\": \"Account created successfully\", \"userId\": %d}", createdUser.getUserId()));
-            resp.setStatus(HttpServletResponse.SC_CREATED);
+            resp.getWriter().print(String.format("{\"success\":true,\"message\":\"Account created\",\"userId\":%d}", createdUser.getUserId()));
             
         } catch (Exception e) {
-            resp.getWriter().print(String.format("{\"success\": false, \"message\": \"%s\"}", e.getMessage()));
             resp.setStatus(HttpServletResponse.SC_BAD_REQUEST);
+            resp.getWriter().print(String.format("{\"success\":false,\"message\":\"%s\"}", e.getMessage()));
         }
     }
 }
