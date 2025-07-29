@@ -14,7 +14,7 @@ import java.sql.Statement;
  */
 public class DBConfig {
     
-    private static BasicDataSource dataSource;
+   // private static BasicDataSource dataSource;
 
     static {
         try {
@@ -32,9 +32,9 @@ public class DBConfig {
         }
     }
 
-    public static Connection getConnection() throws SQLException {
-        return dataSource.getConnection();
-    }
+//    public static Connection getConnection() throws SQLException {
+//        return dataSource.getConnection();
+//    }
 
     public static void closeConnection(Connection conn) {
         if (conn != null) {
