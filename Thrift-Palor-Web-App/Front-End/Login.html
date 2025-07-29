@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,31 +8,50 @@
     <link rel="stylesheet" href="css/login.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
+
 <body>
-    <main class="login-container">
-        <div class="login-box">
-            <h1 class="logo-text">Thrift Parlor</h1>
-            <p class="tagline">Style Delivered</p>
-            <h2>Log In</h2>
-            <p class="instruction">Enter your email address and password to log in</p>
+    <!-- Navigation Bar -->
+    <header id="header">
+        <h1 class="logo-text">Thrift Parlor</h1>
+        <nav>
+            <ul id="navbar">
+                <li><a href="Home.html" class="active">Home</a></li>
+                <li><a href="Shop.html">Shop</a></li>
+                <li><a href="About.html">About</a></li>
+                <li><a href="Contact.html">Contact</a></li>
+                <li><a href="Login.html">Login</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main class="login">
+        <!-- <img src="your-background-image.jpg" class="login_bg" alt="background image" /> -->
 
-            <form class="login-form" id="loginForm"> <div class="form-group">
-                    <label for="email">Email</label>
-                    <input type="email" id="email" name="email" placeholder="" required>
-                </div>
-                <div class="form-group">
-                    <label for="password">Password</label>
-                    <input type="password" id="password" name="password" placeholder="" required>
-                </div>
-                <a href="#" class="forgot-password">Forgot Password</a>
-                <button type="submit" class="login-button">Log In</button>
-            </form>
+        <form class="login_form" id="loginForm">
+            <h1 class="login_title">Thrift Parlor</h1>
 
-            <div class="or-divider">
-                <span>OR</span>
+            <div class="login_inputs">
+                <div class="login_box">
+                    <input type="email" id="email" class="login_input" placeholder="Email" required>
+                    <i class="fas fa-envelope"></i>
+                </div>
+                <div class="login_box">
+                    <input type="password" id="password" class="login_input" placeholder="Password" required>
+                    <i class="fas fa-lock"></i>
+                </div>
             </div>
 
-            <p class="signup-text">NOT YET A MEMBER? <a href="signup.html" class="signup-link">Sign Up</a></p> </div>
+            <div class="login_check">
+                <div class="login_check-box">
+                    <input type="checkbox" class="login_check-input" id="remember">
+                    <label for="remember">Remember me</label>
+                </div>
+                <a href="#" class="login_forgot">Forgot Password</a>
+            </div>
+
+            <button type="submit" class="login_button">Log In</button>
+
+            <p class="login_register">NOT YET A MEMBER? <a href="signup.html">Sign Up</a></p>
+        </form>
     </main>
 
     <footer class="site-footer">
@@ -64,4 +84,5 @@
 
     <script src="js/Login.js"></script>
 </body>
+
 </html>

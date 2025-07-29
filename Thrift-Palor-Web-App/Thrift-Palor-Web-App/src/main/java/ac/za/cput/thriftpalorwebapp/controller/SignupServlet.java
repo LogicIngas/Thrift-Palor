@@ -11,10 +11,9 @@ import jakarta.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.SQLException;
-//import javax.servlet.http.HttpServletResponse;
 import org.json.JSONObject;
 
-@WebServlet(name = "SignupServlet", urlPatterns = {"/signup", "/checkUsername", "/checkEmail"})
+@WebServlet(name = "SignupServlet", urlPatterns = {"/signup"})
 public class SignupServlet extends HttpServlet {
     private UserDAO userDAO;
     
@@ -27,42 +26,6 @@ public class SignupServlet extends HttpServlet {
         } catch (SQLException e) {
             throw new ServletException("Failed to initialize database", e);
         }
-    }
-    
-    protected void doGet(HttpServletRequest request, HttpServletResponse response) 
-            throws ServletException, IOException {
-        String path = request.getServletPath();
-        response.setContentType("application/json");
-        PrintWriter out = response.getWriter();
-        JSONObject jsonResponse = new JSONObject();
-        
-        try {
-            if (path.equals("/checkUsername")) {
-                String username = request.getParameter("username");
-                if (username == null || username.trim().isEmpty()) {
-                    response.setStatus(HttpServletResponse.SC_BAD_REQUEST);
-                    jsonResponse.put("message", "Username parameter is required");
-                } else {
-                    boolean exists = userDAO.usernameExists(username);
-                    jsonResponse.put("exists", exists);
-                }
-            } else if (path.equals("/checkEmail")) {
-                String email = request.getParameter("email");
-                if (email == null || email.trim().isEmpty()) {
-                    response.setStatus(HttpServletResponse.SC_BAD_REQUEST);
-                    jsonResponse.put("message", "Email parameter is required");
-                } else {
-                    boolean exists = userDAO.emailExists(email);
-                    jsonResponse.put("exists", exists);
-                }
-            }
-        } catch (SQLException e) {
-            response.setStatus(HttpServletResponse.SC_INTERNAL_SERVER_ERROR);
-            jsonResponse.put("message", "Database error");
-            e.printStackTrace();
-        }
-        
-        out.print(jsonResponse.toString());
     }
     
     protected void doPost(HttpServletRequest request, HttpServletResponse response) 
@@ -88,7 +51,6 @@ public class SignupServlet extends HttpServlet {
             String firstName = jsonRequest.getString("firstName");
             String lastName = jsonRequest.getString("lastName");
             String phone = jsonRequest.getString("phone");
-            String role = jsonRequest.optString("role", "Buyer");
             
             // Validate input
             if (userDAO.usernameExists(username)) {
@@ -111,7 +73,7 @@ public class SignupServlet extends HttpServlet {
             String passwordHash = PasswordUtil.hashPassword(password);
             
             // Create user object
-            User user = new User(username, passwordHash, email, firstName, lastName, phone, role);
+            User user = new User(username, passwordHash, email, firstName, lastName, phone);
             
             // Insert into database
             boolean success = userDAO.insertUser(user);

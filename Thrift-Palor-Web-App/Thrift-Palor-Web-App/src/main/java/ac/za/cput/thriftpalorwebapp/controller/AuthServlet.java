@@ -1,7 +1,7 @@
 package ac.za.cput.thriftpalorwebapp.controller;
 
 import ac.za.cput.thriftpalorwebapp.dao.UserDAO;
-import ac.za.cput.thriftpalorwebapp.model.User;
+import ac.za.cput.thriftpalorwebapp.domain.User;
 import ac.za.cput.thriftpalorwebapp.util.SecurityUtil;
 import javax.servlet.*;
 import javax.servlet.http.*;

@@ -1,4 +1,4 @@
-package ac.za.cput.thriftpalorwebapp.dao;
+package ac.za.cput.thriftpalorwebapp.model;
 
 import ac.za.cput.thriftpalorwebapp.model.User;
 import java.sql.Connection;
@@ -18,7 +18,6 @@ public class UserDAO {
     "first_name VARCHAR(50)," +
     "last_name VARCHAR(50)," +
     "phone VARCHAR(20)," +
-    "role ENUM('Buyer', 'Seller', 'Admin')," +
     "created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP," +
     "updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP," +
     "PRIMARY KEY (user_id)" +
@@ -49,8 +48,8 @@ public class UserDAO {
     }
     
     public boolean insertUser(User user) throws SQLException {
-        String sql = "INSERT INTO Users (username, password_hash, email, first_name, last_name, phone, role) "
-                     + "VALUES (?, ?, ?, ?, ?, ?, ?)";
+        String sql = "INSERT INTO Users (username, password_hash, email, first_name, last_name, phone) "
+                   + "VALUES (?, ?, ?, ?, ?, ?)";
         
         Connection conn = null;
         PreparedStatement stmt = null;
@@ -65,7 +64,6 @@ public class UserDAO {
             stmt.setString(4, user.getFirstName());
             stmt.setString(5, user.getLastName());
             stmt.setString(6, user.getPhone());
-            stmt.setString(7, user.getRole());
 
             int rows = stmt.executeUpdate();
             return rows > 0;
