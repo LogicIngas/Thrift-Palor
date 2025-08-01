@@ -28,48 +28,83 @@ public class UserDAO {
     }
 
     public User createUser(User user) throws SQLException {
-        if (user.getUsername() == null || user.getPasswordHash() == null || user.getEmail() == null || user.getFirstName() == null) {
-            throw new SQLException("Missing required fields");
-        }
-        
-        Connection conn = null;
-        try {
-            conn = DBConnection.getConnection();
-            try (PreparedStatement stmt = conn.prepareStatement(INSERT_USER_SQL, Statement.RETURN_GENERATED_KEYS)) {
-                stmt.setString(1, user.getUsername());
-                stmt.setString(2, PasswordUtil.hashPassword(user.getPasswordHash()));
-                stmt.setString(3, user.getEmail());
-                stmt.setString(4, user.getFirstName());
-                stmt.setString(5, user.getLastName());
-                stmt.setString(6, user.getPhone());
-
-                int affectedRows = stmt.executeUpdate();
-                if (affectedRows == 0) {
-                    throw new SQLException("Creating user failed, no rows affected");
-                }
-
-                try (ResultSet generatedKeys = stmt.getGeneratedKeys()) {
-                    if (generatedKeys.next()) {
-                        user.setUserId(generatedKeys.getInt(1));
-                    }
-                }
-
-                DBConnection.commitConnection(conn);
-                return user;
-            }
-        } catch (SQLException e) {
-            if (conn != null) {
-                conn.rollback();
-            }
-            throw e;
-        } finally {
-            DBConnection.closeConnection(conn);
-        }
+    if (user.getUsername() == null || user.getPasswordHash() == null || user.getEmail() == null || user.getFirstName() == null) {
+        throw new SQLException("Missing required fields");
     }
+
+    Connection conn = null;
+    try {
+        conn = DBConnection.getConnection();
+        conn.setAutoCommit(false); // Explicitly start transaction
+
+        try (PreparedStatement stmt = conn.prepareStatement(INSERT_USER_SQL, Statement.RETURN_GENERATED_KEYS)) {
+            stmt.setString(1, user.getUsername());
+            stmt.setString(2, PasswordUtil.hashPassword(user.getPasswordHash()));
+            stmt.setString(3, user.getEmail());
+            stmt.setString(4, user.getFirstName());
+            stmt.setString(5, user.getLastName());
+            stmt.setString(6, user.getPhone());
+
+            int affectedRows = stmt.executeUpdate();
+            if (affectedRows == 0) {
+                throw new SQLException("Creating user failed, no rows affected");
+            }
+
+            try (ResultSet generatedKeys = stmt.getGeneratedKeys()) {
+                if (generatedKeys.next()) {
+                    user.setUserId(generatedKeys.getInt(1));
+                }
+            }
+
+            DBConnection.commitConnection(conn);
+            return user;
+        }
+    } catch (SQLException e) {
+        if (conn != null) {
+            try {
+                conn.rollback(); // Ensure rollback doesn't throw another exception
+            } catch (SQLException rollbackEx) {
+                rollbackEx.printStackTrace();
+            }
+        }
+        throw e;
+    } finally {
+        DBConnection.closeConnection(conn);
+    }
+}
 
     private boolean tableExists(Connection conn, String tableName) throws SQLException {
         try (ResultSet rs = conn.getMetaData().getTables(null, null, tableName.toUpperCase(), null)) {
             return rs.next();
         }
     }
+
+    public User findByEmail(String email) throws SQLException {
+    String query = "SELECT * FROM Users WHERE email = ?";
+    Connection conn = null;
+    try {
+        conn = DBConnection.getConnection();
+        try (PreparedStatement stmt = conn.prepareStatement(query)) {
+            stmt.setString(1, email);
+            try (ResultSet rs = stmt.executeQuery()) {
+                if (rs.next()) {
+                    User user = new User();
+                    user.setUserId(rs.getInt("user_id"));
+                    user.setUsername(rs.getString("username"));
+                    user.setPasswordHash(rs.getString("password_hash"));
+                    user.setEmail(rs.getString("email"));
+                    user.setFirstName(rs.getString("first_name"));
+                    user.setLastName(rs.getString("last_name"));
+                    user.setPhone(rs.getString("phone"));
+                    user.setCreatedAt(rs.getTimestamp("created_at"));
+                    user.setUpdatedAt(rs.getTimestamp("updated_at"));
+                    return user;
+                }
+            }
+        }
+    } finally {
+        DBConnection.closeConnection(conn);
+    }
+    return null; // No user found
+}
 }

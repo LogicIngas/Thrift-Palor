@@ -24,6 +24,13 @@
             <version>10.14.2.0</version>
         </dependency>
 
+         <dependency>
+            <groupId>com.google.code.gson</groupId>
+            <artifactId>gson</artifactId>
+            <version>2.10.1</version>
+        </dependency>
+
+
         <!-- Jakarta EE (Servlet API) - for local development -->
         <dependency>
             <groupId>jakarta.servlet</groupId>

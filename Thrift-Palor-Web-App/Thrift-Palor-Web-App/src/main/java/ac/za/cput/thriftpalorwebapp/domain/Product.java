@@ -1,4 +1,4 @@
-package ac.za.cput.thriftpalorwebapp.model;
+package ac.za.cput.thriftpalorwebapp.domain;
 
 public class Product {
     

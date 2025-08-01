@@ -13,5 +13,6 @@
             "name": "project2conn",
             "username": "root"
         }
-    ]
+    ],
+    "java.configuration.updateBuildConfiguration": "interactive"
 }
