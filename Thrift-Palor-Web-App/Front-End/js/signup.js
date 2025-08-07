@@ -2,12 +2,12 @@ document.getElementById('signupForm').addEventListener('submit', async function(
     e.preventDefault();
     
     const userData = {
-        firstName: document.getElementById('firstName').value.trim(),
-        lastName: document.getElementById('lastName').value.trim(),
-        username: document.getElementById('username').value.trim(),
-        email: document.getElementById('email').value.trim(),
-        phone: document.getElementById('phone').value.replace(/\D/g, ''),
-        password: document.getElementById('password').value
+        first_name: document.getElementById('first_name').value,
+        last_name: document.getElementById('last_name').value,
+        username: document.getElementById('username').value,
+        email: document.getElementById('email').value,
+        password: document.getElementById('password').value,
+        phone: document.getElementById('phone').value.replace(/\D/g, '')
     };
 
     if (userData.password !== document.getElementById('confirmPassword').value) {
