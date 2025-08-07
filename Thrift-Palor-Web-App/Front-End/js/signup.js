@@ -21,7 +21,7 @@ document.getElementById('signupForm').addEventListener('submit', async function(
     }
 
     try {
-        const response = await fetch('http://localhost:8080/ThriftParlorWebApp/signup', {
+        const response = await fetch('http://localhost:8080/api/signup', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
