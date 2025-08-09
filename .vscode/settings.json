@@ -12,6 +12,32 @@
             "database": "thriftdb",
             "name": "project2conn",
             "username": "root"
+        },
+        {
+            "mysqlOptions": {
+                "authProtocol": "default",
+                "enableSsl": "Disabled"
+            },
+            "previewLimit": 50,
+            "server": "localhost",
+            "port": 3306,
+            "driver": "MySQL",
+            "name": "projectc",
+            "database": "thriftbd",
+            "username": "root"
+        },
+        {
+            "mysqlOptions": {
+                "authProtocol": "default",
+                "enableSsl": "Disabled"
+            },
+            "previewLimit": 50,
+            "server": "localhost",
+            "port": 3306,
+            "driver": "MySQL",
+            "name": "projectc",
+            "database": "thriftdb",
+            "username": "root"
         }
     ],
     "java.configuration.updateBuildConfiguration": "interactive"
