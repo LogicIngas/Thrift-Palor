@@ -558,3 +558,59 @@ footer .copyright {
     background-color: #efa00b; /* Accent golden yellow */
     color: #471c3c; /* Primary dark purple */
 }
+/* Hamburger Menu Styles */
+#mobile-menu {
+    display: none;
+    cursor: pointer;
+    padding: 10px;
+}
+
+#mobile-menu i {
+    font-size: 24px;
+    color: #ffffff;
+}
+
+#navbar {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#navbar.active {
+    right: 0;
+}
+
+@media (max-width: 768px) {
+    #mobile-menu {
+        display: block;
+    }
+
+    #navbar {
+        position: fixed;
+        top: 70px;
+        right: -300px;
+        width: 300px;
+        height: calc(100vh - 70px);
+        background-color: #471c3c;
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 20px;
+        transition: right 0.3s ease;
+        z-index: 1000;
+    }
+
+    #navbar li {
+        padding: 15px 0;
+        width: 100%;
+    }
+
+    #navbar li a {
+        font-size: 18px;
+    }
+
+    #navbar li a.active::after,
+    #navbar li a:hover::after {
+        width: 100%;
+        left: 0;
+    }
+}

@@ -1,16 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Thrift Parlor - Sign Up</title>
-    <link rel="stylesheet" href="css/login.css"> <!-- Using same CSS as login -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="css/login.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.css">
 </head>
-
 <body>
-    <!-- Navigation Bar -->
     <header id="header">
         <h1 class="logo-text">Thrift Parlor</h1>
         <nav>
@@ -19,20 +16,16 @@
                 <li><a href="Shop.html">Shop</a></li>
                 <li><a href="About.html">About</a></li>
                 <li><a href="Contact.html">Contact</a></li>
-                <li><a href="Login.html">Login</a></li>
+                <li><a class="active" href="Login.html">Login</a></li>
             </ul>
         </nav>
     </header>
 
     <main class="login">
-        <!-- Background image if you want -->
-        <!-- <img src="your-background-image.jpg" class="login_bg" alt="background image" /> -->
-
         <form class="login_form" id="signupForm">
             <h1 class="login_title">Create Account</h1>
 
             <div class="login_inputs">
-                <!-- Name Fields -->
                 <div class="form-row">
                     <div class="login_box" style="flex: 1;">
                         <input type="text" id="firstName" class="login_input" placeholder="First Name" required>
@@ -44,25 +37,21 @@
                     </div>
                 </div>
 
-                <!-- Username -->
                 <div class="login_box">
                     <input type="text" id="username" class="login_input" placeholder="Username" required>
                     <i class="fas fa-at"></i>
                 </div>
 
-                <!-- Email -->
                 <div class="login_box">
                     <input type="email" id="email" class="login_input" placeholder="Email" required>
                     <i class="fas fa-envelope"></i>
                 </div>
 
-                <!-- Phone -->
                 <div class="login_box">
                     <input type="tel" id="phone" class="login_input" placeholder="Phone Number" required>
                     <i class="fas fa-phone"></i>
                 </div>
 
-                <!-- Password Fields -->
                 <div class="form-row">
                     <div class="login_box" style="flex: 1;">
                         <input type="password" id="password" class="login_input" placeholder="Password" required>
@@ -75,7 +64,6 @@
                 </div>
             </div>
 
-            <!-- Terms Checkbox -->
             <div class="login_check">
                 <div class="login_check-box">
                     <input type="checkbox" class="login_check-input" id="terms" required>
@@ -119,5 +107,4 @@
 
     <script src="js/signup.js"></script>
 </body>
-
 </html>

@@ -5,25 +5,25 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Shop</title>
     <link rel="stylesheet" href="./css/style.css" type="text/css">
-    <!-- Add cart.css for cart styling -->
     <link rel="stylesheet" href="./css/cart.css" type="text/css">
-    <!-- FontAwesome Link -->
     <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" />
 </head>
 <body>
     <section id="header">
-        <!-- <a href="#"><img src="images/Logo.jpg" class="logo" alt=""></a> -->
-        <div>
-            <ul id="navbar">
-                <li><a href="Home.html">Home</a></li>
-                <li><a class="active" href="Shop.html">Shop</a></li>
-                <li><a href="AboutUs.html">About Us</a></li>
-                <li><a href="Contact.html">Contact</a></li>
-                <li><a href="Payment.html">Payment</a></li>
-                <li><a id="cart-icon" href="#"><i class="fas fa-shopping-cart"></i></a></li>
-            </ul>
-        </div>
-    </section>
+    <div id="mobile-menu">
+        <i class="fas fa-bars"></i>
+    </div>
+    <div>
+        <ul id="navbar">
+            <li><a href="Home.html">Home</a></li>
+            <li><a href="Shop.html">Shop</a></li>
+            <li><a href="AboutUs.html">About Us</a></li>
+            <li><a href="Contact.html">Contact</a></li>
+            <li><a href="Payment.html">Payment</a></li>
+            <li><a id="cart-icon" href="#"><i class="fas fa-shopping-cart"></i></a></li>
+        </ul>
+    </div>
+</section>
 
     <section id="page-header">
         <h2>Welcome to Shop</h2>
@@ -329,7 +329,6 @@
         </div>
     </footer>
     
-    <!-- Cart Sidebar - Same as in Home.html -->
     <div id="cart-sidebar">
         <div class="cart-header">
             <h2>Your Cart</h2>
@@ -342,7 +341,6 @@
         </div>
     </div>
 
-    <!-- Include the same scripts as Home.html -->
     <script src="./js/cart.js"></script>
     <script src="./js/Home.js"></script>
 </body>
