@@ -1,0 +1,91 @@
+/* Basic container and card styles */
+.order-container {
+    max-width: 800px;
+    margin: 40px auto;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.order-details-card,
+.order-items-card,
+.shipping-address-card {
+    background-color: #f9f9f9;
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    padding: 20px;
+    margin-bottom: 20px;
+}
+
+/* Headings and text */
+h2, h3 {
+    color: #333;
+    text-align: center;
+}
+
+.success-message {
+    text-align: center;
+    color: #28a745;
+    margin-bottom: 25px;
+}
+
+.success-message i {
+    font-size: 4rem;
+}
+
+/* Details and item styling */
+.detail-item {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10px;
+}
+
+.detail-item strong {
+    color: #555;
+}
+
+.order-item {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px 0;
+    border-bottom: 1px solid #ddd;
+}
+
+.order-item:last-child {
+    border-bottom: none;
+}
+
+/* Button styles */
+.actions {
+    text-align: center;
+    margin-top: 30px;
+}
+
+.btn {
+    display: inline-block;
+    padding: 10px 20px;
+    margin: 0 10px;
+    border-radius: 5px;
+    text-decoration: none;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
+}
+
+.btn.primary-btn {
+    background-color: #007bff;
+    color: white;
+}
+
+.btn.primary-btn:hover {
+    background-color: #0056b3;
+}
+
+.btn.secondary-btn {
+    background-color: #6c757d;
+    color: white;
+}
+
+.btn.secondary-btn:hover {
+    background-color: #5a6268;
+}

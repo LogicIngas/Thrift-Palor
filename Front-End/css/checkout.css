@@ -1,0 +1,125 @@
+/* ===== Checkout Container ===== */
+.checkout-container {
+    max-width: 900px;
+    margin: 40px auto;
+    background: #fff;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+/* Checkout Page Heading */
+.checkout-container h2 {
+    text-align: center;
+    margin-bottom: 20px;
+    color: #471c3c; /* Match site theme */
+}
+
+/* Error Message */
+.error-message {
+    color: red;
+    text-align: center;
+    margin-bottom: 10px;
+}
+
+/* Two-column layout for desktop */
+.checkout-content {
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+.checkout-left,
+.checkout-right {
+    flex: 1;
+    min-width: 280px;
+}
+
+/* Section Headings */
+h3 {
+    border-bottom: 2px solid #eee;
+    padding-bottom: 5px;
+    margin-bottom: 15px;
+    color: #471c3c;
+}
+
+/* Form Groups */
+.form-group {
+    margin-bottom: 15px;
+    display: flex;
+    flex-direction: column;
+}
+
+.form-group label {
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+.form-group input,
+.form-group select {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+/* Row with city, province, postal */
+.form-row {
+    display: flex;
+    gap: 10px;
+}
+
+.form-row .form-group {
+    flex: 1;
+}
+
+/* Checkbox */
+.checkbox-group {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+/* Order Summary */
+.order-item, 
+.order-total {
+    display: flex;
+    justify-content: space-between;
+    padding: 6px 0;
+    border-bottom: 1px solid #eee;
+}
+
+.order-total {
+    font-weight: bold;
+    font-size: 18px;
+    margin-top: 10px;
+}
+
+/* Place Order Button */
+.place-order-btn {
+    width: 100%;
+    padding: 12px;
+    background: #471c3c;
+    border: none;
+    color: white;
+    font-size: 16px;
+    font-weight: bold;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background 0.3s ease;
+    margin-top: 20px;
+}
+
+.place-order-btn:hover {
+    background: #080808;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .checkout-content {
+        flex-direction: column;
+    }
+    .checkout-container {
+        margin: 20px;
+        padding: 20px;
+    }
+}

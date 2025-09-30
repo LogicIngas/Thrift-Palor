@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Thrift Parlor - Delivery Address</title>
+    <link rel="stylesheet" href="css/address.css">
+<link rel="stylesheet" href="./css/enhanced-style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Delivery Address</h1>
+        <p id="status-message"></p>
+        <form id="address-form">
+            <label for="street_address">Street Address</label>
+            <input type="text" id="street_address" name="street_address" placeholder="Enter your street address" required>
+
+            <label for="city">City</label>
+            <input type="text" id="city" name="city" placeholder="Enter your city" required>
+
+            <label for="province">Province</label>
+            <input type="text" id="province" name="province" placeholder="Enter your province" required>
+
+            <label for="postal_code">Postal Code</label>
+            <input type="text" id="postal_code" name="postal_code" placeholder="Enter your postal code" required>
+
+            <label for="address_type">Address Type</label>
+            <select id="address_type" name="address_type">
+                <option value="Home">Home</option>
+                <option value="Work">Work</option>
+                <option value="Other">Other</option>
+            </select>
+
+            <label class="checkbox-container">Set as default
+                <input type="checkbox" id="is_default" name="is_default">
+                <span class="checkmark"></span>
+            </label>
+
+            <div class="button-group">
+                <button type="button" id="save-button">Save Address</button>
+                <button type="button" id="update-button">Update Address</button>
+                <button type="button" id="delete-button" class="delete">Delete Address</button>
+            </div>
+        </form>
+    </div>
+
+    <script src="js/address.js"></script>
+
+    <!-- <script>
+    // Initialize cart system when DOM is loaded
+    document.addEventListener('DOMContentLoaded', function() {
+        console.log('Page loaded, initializing cart system...');
+        
+        // Check if cart system already exists
+        if (typeof CartSystem !== 'undefined' && typeof window.cartSystem === 'undefined') {
+            window.cartSystem = new CartSystem();
+            console.log('Cart system initialized successfully');
+        } else if (typeof window.cartSystem !== 'undefined') {
+            console.log('Cart system already initialized');
+        } else {
+            console.error('CartSystem class not found');
+        }
+        
+        // Debug: Check localStorage
+        console.log('Current cart in localStorage:', localStorage.getItem('thrift_parlor_cart'));
+    });
+</script> -->
+
+<script src="./js/cart.js"></script>
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        console.log('Initializing cart system...');
+        if (typeof CartSystem !== 'undefined') {
+            window.cartSystem = new CartSystem();
+            console.log('Cart system initialized successfully');
+        }
+    });
+</script>
+</body>
+</html>

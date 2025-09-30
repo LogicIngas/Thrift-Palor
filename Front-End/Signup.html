@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Thrift Parlor - Sign Up</title>
+    <link rel="stylesheet" href="css/signup.css">
+<link rel="stylesheet" href="./css/enhanced-style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.css">
+</head>
+
+<body>
+    <header id="header">
+        <div id="mobile-menu">
+            <i class="fas fa-bars"></i>
+        </div>
+        <h1 class="logo-text">Thrift Parlor</h1>
+        <nav>
+            <ul id="navbar">
+                <li><a href="home.php">Home</a></li>
+                <li><a class="active" href="htmlogin.php">Login</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main class="login">
+        <form class="login_form" id="signupForm" action="auth.php" method="POST">
+            <h1 class="login_title">Create Account</h1>
+
+            <div class="login_inputs">
+                <div class="form-row">
+                    <div class="login_box" style="flex: 1;">
+                        <input type="text" name="first_name" placeholder="First Name" required>
+                    </div>
+                    <div class="login_box" style="flex: 1;">
+                        <input type="text" name="last_name" placeholder="Last Name" required>
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <div class="login_box" style="flex: 1;">
+                        <input type="text" name="username" placeholder="Username" required>
+                    </div>
+                    <div class="login_box" style="flex: 1;">
+                        <input type="email" name="email" placeholder="Email ID" required>
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <div class="login_box" style="flex: 1;">
+                        <input type="password" name="password" placeholder="Password" required>
+                    </div>
+                    <div class="login_box" style="flex: 1;">
+                        <input type="password" name="confirm_password" placeholder="Confirm Password" required>
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <div class="login_box" style="flex: 1;">
+                        <input type="tel" name="phone" placeholder="Phone Number">
+                    </div>
+                </div>
+
+                <div class="role-selection">
+                    <p>Register as:</p>
+                    <div class="radio-group">
+                        <div class="radio-option selected">
+                            <input type="radio" id="user_buyer" name="user_role" value="buyer" checked>
+                            <label for="user_buyer">Buyer</label>
+                        </div>
+                        <div class="radio-option">
+                            <input type="radio" id="user_seller" name="user_role" value="seller">
+                            <label for="user_seller">Seller</label>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="login_check">
+                <div class="login_check-box">
+                    <input type="checkbox" class="login_check-input" id="terms" name="terms" required>
+                    <label for="terms" class="login_check-label">I agree to the Terms & Conditions</label>
+                </div>
+            </div>
+
+            <button type="submit" class="login_button">Sign Up</button>
+
+            <p class="login_register">ALREADY HAVE AN ACCOUNT? <a href="htmlogin.php">Log In</a></p>
+        </form>
+    </main>
+
+    <footer class="site-footer">
+        <div class="footer-content">
+            <div class="footer-section">
+                <p><i class="fas fa-box"></i> Thrift Parlor</p>
+                <p><i class="fab fa-instagram"></i> Thrift Parlor</p>
+                <p><i class="fab fa-tiktok"></i> Thrift Parlor</p>
+            </div>
+            <div class="footer-section">
+                <p>Thrift Parlor</p>
+            </div>
+            <div class="footer-section">
+                <p>About us</p>
+                <p>Store Policy</p>
+                <p>Terms and Conditions</p>
+            </div>
+            <div class="footer-section">
+                <p>Contact us</p>
+                <p>FAQ</p>
+                <p>Delivery options</p>
+            </div>
+            <div class="footer-section">
+                <p>Orders</p>
+                <p>Payment Option</p>
+                <p>Help Center</p>
+            </div>
+        </div>
+    </footer>
+    
+    <script src="./js/Home.js"></script>
+</body>
+
+</html>

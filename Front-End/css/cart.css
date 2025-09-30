@@ -1,0 +1,137 @@
+/* #cart-container {
+    display: flex;
+    justify-content: space-between;
+    padding: 20px;
+    gap: 30px;
+    flex-wrap: wrap; /* Allows sections to wrap on smaller screens */
+/* } */
+
+/* Cart Table Styling */
+/* .cart-table {
+    flex: 2;
+    overflow-x: auto; /* Ensures table is scrollable on small screens */
+    /* min-width: 350px;
+    border-collapse: collapse;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    background-color: #f9f9f9;
+} */
+
+/* .cart-table th, .cart-table td {
+    border: 1px solid #ddd;
+    padding: 12px;
+    text-align: left;
+    white-space: nowrap;
+} */
+
+/* .cart-table th {
+    background-color: #088178;
+    color: white;
+    font-weight: bold;
+} */
+
+/* .cart-table img {
+    width: 80px;
+    height: 80px;
+    object-fit: cover;
+    border-radius: 4px;
+} */
+
+/* .product-info {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+} */
+
+/* .product-name {
+    font-size: 16px;
+    color: #333;
+} */
+
+/* Quantity and Remove Buttons */
+/* .cart-table .quantity-input {
+    width: 60px;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    text-align: center;
+} */
+
+/* .cart-table .remove-btn {
+    background-color: #ff4d4d;
+    color: white;
+    border: none;
+    padding: 8px 12px;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+} */
+
+/* .cart-table .remove-btn:hover {
+    background-color: #cc0000;
+} */
+
+/* Cart Total Styling */
+/* .cart-total-container {
+    flex: 1;
+    min-width: 300px;
+    padding: 20px;
+    background-color: #f9f9f9;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    align-self: flex-start; /* Aligns the total container to the top */
+/* } */
+
+/* .cart-total {
+    font-size: 24px;
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 20px;
+    text-align: right;
+} */
+
+/* .cart-total span {
+    color: #088178;
+} */
+
+/* .checkout-btn {
+    display: block;
+    width: 100%;
+    padding: 12px 20px;
+    margin-bottom: 10px;
+    background-color: #088178;
+    color: white;
+    font-size: 18px;
+    font-weight: bold;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    text-align: center;
+    transition: background-color 0.3s ease;
+} */
+
+/* .checkout-btn:hover {
+    background-color: #066d63;
+} */
+
+/* .continue-shopping {
+    display: block;
+    text-align: center;
+    color: #088178;
+    text-decoration: none;
+    font-weight: bold;
+    padding: 10px;
+    transition: color 0.3s ease;
+} */
+
+/* .continue-shopping:hover {
+    color: #066d63;
+} */
+
+/* Empty cart message */
+/* #cart-container .empty-cart-message {
+    text-align: center;
+    width: 100%;
+    padding: 50px 20px;
+    color: #555;
+    font-size: 18px;
+} */

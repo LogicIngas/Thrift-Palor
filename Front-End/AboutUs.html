@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us</title>
+    <link rel="stylesheet" href="./css/style.css" type="text/css">
+    <link rel="stylesheet" href="./css/cart.css" type="text/css">
+    <link rel="stylesheet" href="./css/enhanced-style.css">
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" />
+    
+    <style>
+    /* VARIABLES (Assuming these are defined in your linked CSS files) */
+    /* --primary-color, --secondary-color, --shadow, etc. */
+
+    /* 1. Page Header Banner Styling */
+    #page-header.about-header {
+        background-color: var(--primary-color, #471c3c); /* Use a solid color for visibility */
+        background-image: none;
+        width: 100%;
+        height: 40vh; /* Give it some vertical height */
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        color: white; /* Ensure text is visible */
+    }
+    #page-header.about-header h2 {
+        font-size: 3em;
+        margin-bottom: 5px;
+    }
+    #page-header.about-header p {
+        font-size: 1.2em;
+    }
+
+    /* 2. About Head Section (Text + Image) */
+    #about-head {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        justify-content: space-around; /* Distribute space evenly */
+        gap: 40px;
+        padding: 80px 50px; /* Increased vertical padding */
+        background-color: #f0f0f0; /* Light background for contrast */
+    }
+
+    #about-head img {
+        max-width: 400px;
+        width: 100%;
+        height: auto;
+        border-radius: 15px; /* Softer corners */
+        box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); /* Stronger shadow */
+        object-fit: contain; /* Ensures logo isn't cropped if it's not a perfect square */
+    }
+
+    #about-head div {
+        max-width: 50%; /* Control the width of the text block */
+        min-width: 300px;
+    }
+    #about-head h2 {
+        color: var(--primary-color, #471c3c);
+        font-size: 2.5em;
+        margin-bottom: 20px;
+    }
+    #about-head p {
+        line-height: 1.8;
+        color: #555;
+    }
+
+    /* 3. Download App Section Styling (Video) */
+    #about-app {
+        text-align: center;
+        padding: 80px 50px;
+    }
+
+    .app-status-message {
+        font-size: 1.2em;
+        color: #777; /* Use a moderate gray for soft emphasis */
+        margin: -10px auto 40px auto; /* Adjust margin to position it neatly */
+        max-width: 600px;
+        line-height: 1.6;
+    }
+    .app-status-message strong {
+        color: var(--secondary-color, #a67c52); /* Highlight the "coming soon" part */
+    }
+
+    #about-app h1 {
+        font-size: 2.5em;
+        margin-bottom: 10px;
+        color: #333;
+    }
+    #about-app a {
+        color: var(--secondary-color, #a67c52);
+        text-decoration: none;
+        transition: color 0.3s;
+    }
+    .video {
+        width: 70%;
+        max-width: 800px;
+        margin: 0 auto;
+        border-radius: 15px;
+        overflow: hidden;
+        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+    }
+    .video video {
+        width: 100%;
+        height: auto;
+        display: block;
+    }
+    
+    /* 4. Feature Section (6 boxes) */
+    #feature {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center; /* Center the entire row of boxes */
+        gap: 20px; /* Reduced gap slightly */
+        padding: 80px 50px; /* Increased vertical padding */
+        background-color: #f9f9f9;
+    }
+
+    .fe-box {
+        flex: 0 0 calc(16.66% - 20px); /* Tries to fit 6 in a row, minus gap */
+        min-width: 150px; /* Ensures they don't get too small */
+        max-width: 180px; /* Consistent maximum size */
+        text-align: center;
+        padding: 25px 15px; /* Adjusted padding */
+        border-radius: 10px;
+        background: #fff;
+        box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        transition: transform 0.3s ease;
+    }
+
+    .fe-box img {
+        width: 100%; 
+        max-height: 100px; /* Limit image height to prevent vertical stretching */
+        object-fit: contain; /* CRITICAL: Prevents cropping and fits entire image */
+        margin-bottom: 15px;
+    }
+
+    /* 5. Footer Layout */
+    footer {
+        display: flex;
+        flex-direction: column; /* Stack items */
+        align-items: center;
+        text-align: center;
+        background: var(--primary-color, #471c3c);
+        color: white;
+        padding: 40px 20px;
+    }
+    footer h2 {
+        font-size: 1.5em;
+        margin-bottom: 15px;
+    }
+    .follow {
+        margin-bottom: 20px;
+    }
+    .follow .icon i {
+        color: white;
+        margin: 0 10px;
+        font-size: 1.5em;
+        cursor: pointer;
+        transition: color 0.3s;
+    }
+    .follow .icon i:hover {
+        color: var(--secondary-color, #a67c52);
+    }
+    .copyright {
+        margin-top: 10px;
+        border-top: 1px solid rgba(255, 255, 255, 0.2);
+        padding-top: 15px;
+        width: 100%;
+    }
+
+
+    /* Responsive adjustments */
+    @media (max-width: 800px) {
+        #about-head {
+            padding: 60px 20px;
+        }
+        #about-head div {
+            max-width: 100%;
+        }
+        #about-app .video {
+            width: 90%;
+        }
+    }
+    @media (max-width: 500px) {
+        #page-header.about-header h2 {
+            font-size: 2.5em;
+        }
+        .fe-box {
+            flex: 0 0 calc(50% - 20px); /* 2 items per row on mobile */
+            max-width: 100%;
+        }
+    }
+</style>
+
+</head>
+<body>
+    <section id="header">
+        <div id="mobile-menu">
+            <i class="fas fa-bars"></i>
+        </div>
+        <div>
+            <ul id="navbar">
+                <li><a href="home.php">Home</a></li>
+                <li><a href="Shop.php">Shop</a></li>
+                <li><a href="AboutUs.html" class="active">About Us</a></li>
+                <li><a href="Contact.html">Contact</a></li>
+                <li><a href="orders.php">My Orders</a></li>
+                <li><a href="cart.php"><i class="fas fa-shopping-cart"></i> Cart</a></li>
+                <li><a href="logout.php">Logout</a></li>
+            </ul>
+        </div>
+    </section>
+
+    <section id="page-header" class="about-header">
+        <h2>About Us</h2>
+        <p>Know Everything About Our Company</p>
+    </section>
+
+    <section id="about-head" class="section-p1">
+        <img src="images/Logo.jpg" alt="Thrift Palor Logo">
+        <div>
+            <h2>Who We Are?</h2>
+            <p>Thrift Palor is a vintage fashion e-commerce store dedicated to bringing you the best pre-loved clothes at affordable prices. Our mission is to promote sustainable fashion by giving high-quality garments a second life. We believe in style, quality, and a better planet. From timeless classics to modern treasures, every piece in our collection is carefully selected and inspected to ensure it meets our standards.</p>
+            <br>
+            <marquee bgcolor="#ccc" loop="-1" scrollamount="5" width="100%">Creating beautiful and sustainable clothes that will last a lifetime.</marquee>
+        </div>
+    </section>
+
+    <section id="about-app" class="section-p1">
+        <h1>Download Our <a href="#">App</a></h1>
+        <p class="app-status-message">
+            We're currently working hard to bring you a better shopping experience. Our mobile app is **coming soon!** In the meantime, please enjoy shopping on our mobile-friendly website.
+        </p>
+        <div class="video">
+            <video autoplay muted loop src="images/1.mp4"></video>
+        </div>
+    </section>
+
+    <section id="feature" class="section-p1">
+        <div class="fe-box">
+            <img src="./images/Free fast delivery service by scooter on yellow background courier delivers food order a man delivers a parcel around town express delivery cartoon design ai generation _ Premium AI-generated image.jpeg" alt="">
+            <h6>Free Shipping</h6>
+        </div>
+        <div class="fe-box">
+            <img src="./images/6 Reasons Why Small Businesses Should Budget For Social Media Marketing.jpeg" alt="">
+            <h6>Online Order</h6>
+        </div>
+        <div class="fe-box">
+            <img src="./images/Money Saving Tips - WONDERMOM WANNABE.jpeg" alt="">
+            <h6>Save Money</h6>
+        </div>
+        <div class="fe-box">
+            <img src="./images/Make Yourself Heard Hand Holding A Red Megaphone, Hand, Holding, Red Megaphone PNG Transparent Image and Clipart for Free Download.jpeg" alt="">
+            <h6>Promotions</h6>
+        </div>
+        <div class="fe-box">
+            <img src="./images/Premium Photo _ Open gift box or present with confetti.jpeg" alt="">
+            <h6>Happy Sell</h6>
+        </div>
+        <div class="fe-box">
+            <img src="./images/Helpdesk Support_ Problems Simplified.jpeg" alt="">
+            <h6>24/7 Support</h6>
+        </div>
+    </section>
+
+    <section id="newsletter" class="section-p1 section-m1">
+        <div class="newstext">
+            <h4>Sign Up for Newsletter</h4>
+            <p>Get E-mail updates about latest products and <span>special offers.</span></p>
+        </div>
+        <div class="form">
+            <input type="email" placeholder="Your Email Address">
+            <button class="normal">Sign Up</button>
+        </div>
+    </section>
+
+    <footer class="section-p1">
+        <div class="follow">
+            <h2>Follow on</h2>
+            <div class="icon">
+                <i class="fab fa-facebook-f"></i>
+                <i class="fab fa-twitter"></i>
+                <i class="fab fa-instagram"></i>
+                <i class="fab fa-youtube"></i>
+            </div>
+        </div>
+        <div class="copyright">
+            <p>@ThriftPalor. All rights reserved.</p>
+        </div>
+    </footer>
+    <script src="./js/Home.js"></script>
+</body>
+</html>
