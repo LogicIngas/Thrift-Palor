@@ -125,7 +125,7 @@ body {
 #hero p {
     color: #ffffff;
 }
-
+/*
 #hero button {
     background-image: url("/img/button.png");
     background-color: transparent;
@@ -138,7 +138,7 @@ body {
     font-size: 15px;
     transition: all 0.3s ease;
 }
-
+*/
 #hero button:hover {
     color: #efa00b; /* Accent golden yellow */
 }
@@ -291,10 +291,34 @@ body {
 }
 
 /* Footer */
+/* AFTER (style.css) - Use the primary color for a consistent look */
 footer {
-    background-color: #554348; /* Secondary muted purple */
-    color: #ffffff;
-    padding: 40px 0;
+  background-color: #471c3c; /* Using var(--primary-color) equivalent */
+  color: #ffffff; /* EnsSure main footer text is bright white */
+ padding: 40px 0;
+}
+
+/* Footer Layout - Forces columns into a horizontal row */
+.footer-grid-wrapper {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap; /* Allows columns to stack on mobile */
+    max-width: 1200px; /* Limits the width of the content */
+    margin: 0 auto; /* Centers the content */
+    padding: 0 20px;
+}
+
+/* Ensure footer links are visible */
+footer a {
+    color: #c5c5c5; /* Light grey for links, better readability */
+    text-decoration: none;
+    display: block; /* Makes links full width for easier clicking */
+    padding: 5px 0;
+    transition: all 0.2s ease;
+}
+
+footer a:hover {
+    color: var(--accent-color); /* Use your vibrant yellow accent color */
 }
 
 footer .follow {
@@ -613,4 +637,354 @@ footer .copyright {
         width: 100%;
         left: 0;
     }
+}
+:root {
+    --primary-purple: #471c3c;
+    --secondary-purple: #6a2c5e;
+    --accent-pink: #ff6b9d;
+    --light-bg: #f8f9fa;
+    --text-dark: #2d3748;
+    --text-light: #718096;
+}
+
+/* Styling for the call-to-action buttons */
+.shipping-actions {
+    text-align: center;
+    margin-top: 40px;
+    padding-top: 20px;
+}
+
+.action-btn {
+    display: inline-block;
+    padding: 12px 25px;
+    margin: 10px;
+    text-decoration: none;
+    font-size: 16px;
+    font-weight: 600;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s, color 0.3s, border 0.3s;
+    border: 1px solid transparent; /* Ensure border exists for consistency */
+}
+
+/* Primary Button (Continue Shopping) - Use your main site color (Maroon/Purple) */
+.primary-btn {
+    background-color: #471c3c; /* Deep Purple from Navbar */
+    color: white;
+    border-color: #471c3c;
+}
+
+.primary-btn:hover {
+    background-color: #6a2a53; /* Slightly lighter on hover */
+}
+
+/* Secondary Button (View All My Orders) - A lighter, contrasting style */
+.secondary-btn {
+    background-color: white;
+    color: #471c3c; /* Text color matches primary button */
+    border-color: #471c3c;
+}
+
+.secondary-btn:hover {
+    background-color: #f0f0f0; /* Light hover effect */
+    color: #333;
+}
+
+/* Product Section Adjustments */
+/* ==================================== */
+/* Enhanced Single Product (sproduct.php) Styles */
+/* ==================================== */
+
+#prodetails {
+    display: flex;
+    padding-top: 50px;
+    gap: 40px;
+    /* Use a responsive padding for all pages */
+    padding-left: 5vw;
+    padding-right: 5vw;
+    background: var(--light-bg);
+}
+
+.single-pro-image {
+    width: 40%;
+    min-width: 300px;
+    box-shadow: var(--shadow);
+    border-radius: var(--radius);
+    overflow: hidden;
+}
+
+.main-product-img {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.4s ease;
+}
+
+.single-pro-image:hover .main-product-img {
+    transform: scale(1.03);
+}
+
+.single-pro-details {
+    width: 60%;
+    padding-top: 30px;
+}
+
+.single-pro-details h1 {
+    font-size: 38px;
+    color: var(--text-dark);
+    margin: 10px 0 15px;
+}
+
+.single-pro-details .product-category {
+    font-size: 16px;
+    color: var(--text-light);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-weight: 500;
+}
+
+.single-pro-details .product-price {
+    font-size: 32px;
+    color: var(--accent-color);
+    font-weight: 700;
+    margin-bottom: 25px;
+}
+
+/* Product Rating (Optional but recommended) */
+.product-rating {
+    color: #ffd700; /* Gold color for stars */
+    margin-bottom: 25px;
+}
+.product-rating i {
+    font-size: 16px;
+}
+.product-rating span {
+    font-size: 14px;
+    color: var(--text-light);
+    margin-left: 5px;
+}
+
+/* Add to Cart Form Styling */
+.add-to-cart-form {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    margin-bottom: 40px;
+}
+
+.quantity-control {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.quantity-input {
+    width: 70px;
+    padding: 10px;
+    text-align: center;
+    border: 2px solid var(--primary-color);
+    border-radius: 8px;
+    font-size: 16px;
+}
+/* Hide default arrows on number input */
+.quantity-input::-webkit-outer-spin-button,
+.quantity-input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+.quantity-input[type=number] {
+    -moz-appearance: textfield;
+}
+
+/* Enhanced Add to Cart Button */
+.primary-btn-lg {
+    /* Uses the existing .btn and .normal styling */
+    padding: 12px 30px; 
+    font-size: 16px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+/* Product Description Box */
+.product-description-box {
+    margin-top: 30px;
+    padding: 20px;
+    border-left: 5px solid var(--accent-color);
+    background: #ffffff;
+    border-radius: 8px;
+    box-shadow: var(--shadow);
+}
+.product-description-box h4 {
+    color: var(--primary-color);
+    font-size: 20px;
+    margin-bottom: 10px;
+}
+.product-description-box p {
+    line-height: 1.6;
+    color: var(--text-dark);
+}
+
+/* Trust Badges */
+.product-features {
+    margin-top: 20px;
+    display: flex;
+    gap: 15px;
+    flex-wrap: wrap;
+}
+.feature-badge {
+    padding: 8px 15px;
+    background: #e9ecef;
+    border-radius: 6px;
+    font-size: 14px;
+    color: var(--text-dark);
+    font-weight: 500;
+}
+.feature-badge i {
+    color: var(--secondary-color);
+    margin-right: 5px;
+}
+
+/* Similar Products Section */
+#similar-products {
+    text-align: center;
+    padding-top: 80px;
+    padding-bottom: 80px;
+}
+#similar-products h2 {
+    font-size: 2.5em;
+    color: var(--primary-color);
+    margin-bottom: 10px;
+}
+#similar-products p {
+    color: var(--text-light);
+    margin-bottom: 40px;
+}
+/* Note: The product cards themselves (.pro-container, .pro) are already styled. */
+
+/* Responsive Adjustments for Single Product Page */
+@media (max-width: 850px) {
+    #prodetails {
+        flex-direction: column;
+        padding-top: 30px;
+    }
+    .single-pro-image,
+    .single-pro-details {
+        width: 100%;
+        padding-top: 0;
+    }
+    .single-pro-image {
+        margin-bottom: 20px;
+    }
+    .single-pro-details h1 {
+        font-size: 32px;
+    }
+    .single-pro-details .product-price {
+        font-size: 28px;
+    }
+}
+
+/* ==================================== */
+/* RELATED PRODUCTS - Compact Layout */
+/* ==================================== */
+
+#similar-products {
+    text-align: center;
+    padding-top: 80px;
+    padding-bottom: 80px;
+}
+
+.related-pro-container {
+    display: flex;
+    justify-content: center;
+    gap: 20px; /* Space between the cards */
+    padding-top: 20px;
+    flex-wrap: wrap; /* Allows wrapping on smaller screens */
+    margin: 0 auto;
+    max-width: 90%; /* Keep container slightly smaller for centered look */
+}
+
+/* Style for the compact card (related-pro) */
+.related-pro {
+    /* Fixed smaller size */
+    width: 200px;
+    min-width: 180px;
+    max-width: 220px; 
+    
+    /* Reuse existing card aesthetic properties */
+    padding: 10px;
+    border: 1px solid #e0e0e0;
+    border-radius: 15px;
+    cursor: pointer;
+    box-shadow: 10px 10px 20px rgba(0, 0, 0, 0.02);
+    margin: 10px 0;
+    position: relative;
+    transition: all 0.3s ease;
+    background-color: #ffffff;
+}
+
+.related-pro:hover {
+    box-shadow: 20px 20px 30px rgba(71, 28, 60, 0.1);
+    transform: translateY(-5px);
+}
+
+/* Image styling for the compact card */
+.related-pro img {
+    width: 100%;
+    height: 180px; /* Enforces uniform height */
+    object-fit: cover;
+    border-radius: 10px;
+}
+
+/* Product details styling */
+.related-pro .des {
+    text-align: start;
+    padding: 10px 0;
+}
+
+.related-pro .des span {
+    color: #606063;
+    font-size: 11px;
+}
+
+.related-pro .des h5 {
+    padding-top: 5px;
+    color: #1a1a1a;
+    font-size: 14px;
+    /* Limit height to prevent wrapping issues */
+    height: 30px; 
+    overflow: hidden;
+}
+
+.related-pro .des h4 {
+    padding-top: 5px;
+    font-size: 15px;
+    font-weight: 700;
+    color: #471c3c;
+}
+
+/* Cart icon positioning/styling (ensure the .cart class is defined globally) */
+.related-pro .cart-btn {
+    width: 35px;
+    height: 35px;
+    line-height: 35px;
+    font-size: 14px;
+    border-radius: 50px;
+    background-color: #f5f5f5;
+    font-weight: 500;
+    color: #471c3c;
+    border: 1px solid #e0e0e0;
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.related-pro .cart-btn:hover {
+    background-color: #efa00b;
+    color: #ffffff;
 }
