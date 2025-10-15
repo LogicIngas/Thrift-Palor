@@ -95,8 +95,8 @@ function initializeProducts() {
         ['Shirt + Cap', 'Panda Wear shirt and cap set', 210.00, 'images/ShitAndCap.jpg', 'Panda Wear'],
         ['Bucket Hat', 'SPCC bucket hat', 300.00, 'images/SPCCHat.jpg', 'SPCC'],
         ['Barklay Canvas', 'Nunn Bush Men\'s Barklay Canvas shoes', 450.00, 'images/Brand_ Nunn Bush Nunn Bush Men\'s Barklay Canvas Plain Toe Oxford Lace Up.jpeg', 'Lace Up'],
-        ['Running Shoes', 'Adidas running shoes', 650.00, 'images/n6.jpg', 'Adidas'],
-        ['Sports Jacket', 'Nike sports jacket', 420.00, 'images/n7.jpg', 'Nike'],
+        ['Cap and Shirt', 'Adidas running shoes', 650.00, 'images/n6.jpg', 'Adidas'],
+        ['Shirt Track Suit', 'Panda Wear', 420.00, 'images/n7.jpg', 'Nike'],
         ['Track Pants', 'Puma track pants', 280.00, 'images/n8.jpg', 'Puma']
     ];
     

@@ -1,8 +1,16 @@
 <?php
 session_start();
 require_once 'products.php';
+require_once 'config/database.php';
+
+// Check if user is logged in
+if (!isset($_SESSION['user_id'])) {
+    header("Location: htmlogin.php");
+    exit();
+}
+
 $productHandler = new Product();
-$featuredProducts = $productHandler->getAllProducts(); // You might want to create a getFeaturedProducts() method
+$featuredProducts = $productHandler->getAllProducts();
 ?>
 
 <!DOCTYPE html>
@@ -16,143 +24,93 @@ $featuredProducts = $productHandler->getAllProducts(); // You might want to crea
     <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" />
     <style>
         /* Hero Section Enhancements */
-    
-    /* Hero Section Enhancements */
-    #hero {
-        display: flex; /* 💡 NEW: Use Flexbox for side-by-side layout */
-        justify-content: space-between; /* Space out content and logo */
-        align-items: center; /* Vertically align items */
-        text-align: left; /* 💡 CHANGE: Align content text to the left */
-        
-        background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
-        color: white;
-        padding: 100px 80px; /* Adjusted padding */
-        position: relative;
-        min-height: 400px;
-        overflow: hidden;
-    }
-
-    /* 💡 NEW: Ensure content block doesn't take up the full width */
-    .hero-content {
-       flex-grow: 1;
-        max-width: 65%; 
-        z-index: 10;
-         display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: flex-start;
-    }
-    
-    /* 💡 NEW: Styling for the logo container and image */
-    .hero-logo-container {
-        
-        flex-shrink: 0; 
-        display: flex;
-        justify-content: flex-end; /* Push the content of this container to the right */
-        align-items: center;
-        margin-left: 20px; /* Add some space between text and logo */
-        z-index: 10; 
-    }
-
-    .hero-logo {
-        /* Fill container */
-        width: 100%;
-        max-heigth: 350px; /* Default to full container width */
-        max-width: 300px; /* **Ensure the logo never exceeds 250px in width** */
-        height: auto;
-        border-radius: 50%; 
-        box-shadow: 0 0 30px rgba(255, 255, 255, 0.2); 
-        transition: transform 0.3s ease;
-        object-fit: contain;  
-    }
-
-    .hero-logo:hover {
-        transform: scale(1.05);
-    }
-    
-    /* NEW Keyframes for subtle pulsing effect */
-    @keyframes pulse {
-        0% { transform: scale(1); }
-        50% { transform: scale(1.02); }
-        100% { transform: scale(1); }
-    }
-    
-    /* FIX the text-align for content that was centered before */
-    #hero h4, #hero h2, #hero h1, #hero p, #hero a {
-        text-align: left; /* Ensure all text within the content block aligns left */
-        margin-left: 0;
-        margin-right: 0;
-    }
-    #hero h2 {
-        font-size: 3.5em;
-        margin-bottom: 20px;
-        text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
-        color: white !important; /* Keep the color fix */
-    }
-
-    /* ... (rest of the CSS media queries and styles below this remain the same) ... */
-
-    /* IMPORTANT: Add responsive logic for small screens */
-    @media (max-width: 768px) {
         #hero {
-            flex-direction: column; /* Stack items vertically on mobile/tablet */
-            text-align: center; /* Center text when stacked */
-            padding: 80px 40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            text-align: left;
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: white;
+            padding: 100px 80px;
+            position: relative;
+            min-height: 400px;
+            overflow: hidden;
         }
 
         .hero-content {
-            max-width: 100%; /* Allow content to take full width */
-            margin-bottom: 40px; /* Add spacing below text */
+            flex-grow: 1;
+            max-width: 65%;
+            z-index: 10;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: flex-start;
         }
         
         .hero-logo-container {
-            max-width: 100%;
-            order: -1; /* Place logo above text content on small screens (optional) */
+            flex-shrink: 0;
+            display: flex;
+            justify-content: flex-end;
+            align-items: center;
+            margin-left: 20px;
+            z-index: 10;
         }
 
         .hero-logo {
-            max-width: 180px; /* Reduce logo size on small screens */
+            width: 100%;
+            max-height: 350px;
+            max-width: 300px;
+            height: auto;
+            border-radius: 50%;
+            box-shadow: 0 0 30px rgba(255, 255, 255, 0.2);
+            transition: transform 0.3s ease;
+            object-fit: contain;
+        }
+
+        .hero-logo:hover {
+            transform: scale(1.05);
         }
         
-        /* Center text again when stacked on mobile */
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.02); }
+            100% { transform: scale(1); }
+        }
+        
         #hero h4, #hero h2, #hero h1, #hero p, #hero a {
-             text-align: center; 
+            text-align: left;
+            margin-left: 0;
+            margin-right: 0;
         }
         
-        #hero p {
-             margin-left: auto;
-             margin-right: auto;
+        #hero h2 {
+            font-size: 3.5em;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+            color: white !important;
         }
-    }
 
-        
         /* Feature Section */
-      #feature {
-    padding: 80px 20px;
-    background: var(--light-bg); 
-    
-    /* NEW: Add Flexbox to arrange the fe-box children horizontally */
-    display: flex;
-    justify-content: space-between; /* Distribute items evenly in the space */
-    flex-wrap: wrap; /* Allow the boxes to wrap to the next line on smaller screens */
-    gap: 30px; /* Provides consistent spacing between boxes */
-}
+        #feature {
+            padding: 80px 20px;
+            background: var(--light-bg);
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 30px;
+        }
 
-.fe-box {
-    /* Set a flexible width so three or four fit, depending on screen size */
-    width: calc(16.66% - 20px); /* Tries to fit 6 per row */
-    min-width: 150px; /* Ensures a minimum size, forcing wrap on small screens */
-    
-    /* Retain your existing styling (shadow, padding, hover effect) */
-    background: white;
-    padding: 40px 30px;
-    border-radius: 15px;
-    text-align: center;
-    box-shadow: var(--shadow);
-    transition: var(--transition);
-    border: 2px solid transparent;
-}
-        
+        .fe-box {
+            width: calc(16.66% - 20px);
+            min-width: 150px;
+            background: white;
+            padding: 40px 30px;
+            border-radius: 15px;
+            text-align: center;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            border: 2px solid transparent;
+        }
         
         .fe-box:hover {
             transform: translateY(-10px);
@@ -213,7 +171,6 @@ $featuredProducts = $productHandler->getAllProducts(); // You might want to crea
         
         .section-m1 {
             margin: 40px 0;
-            
         }
         
         /* Newsletter Enhancements */
@@ -262,22 +219,49 @@ $featuredProducts = $productHandler->getAllProducts(); // You might want to crea
             }
             
             .fe-box {
-        width: calc(33% - 20px); /* 3 items per row on tablets */
-    }
-
-    
+                width: calc(33% - 20px);
+            }
             
             .form input {
                 width: 100%;
                 margin-bottom: 15px;
             }
+            
+            #hero {
+                flex-direction: column;
+                text-align: center;
+                padding: 80px 40px;
+            }
+
+            .hero-content {
+                max-width: 100%;
+                margin-bottom: 40px;
+            }
+            
+            .hero-logo-container {
+                max-width: 100%;
+                order: -1;
+            }
+
+            .hero-logo {
+                max-width: 180px;
+            }
+            
+            #hero h4, #hero h2, #hero h1, #hero p, #hero a {
+                 text-align: center;
+            }
+            
+            #hero p {
+                 margin-left: auto;
+                 margin-right: auto;
+            }
         }
 
         @media (max-width: 600px) {
-    .fe-box {
-        width: calc(50% - 20px); /* 2 items per row on phones */
-    }
-}
+            .fe-box {
+                width: calc(50% - 20px);
+            }
+        }
         
         @media (max-width: 480px) {
             #hero {
@@ -302,6 +286,7 @@ $featuredProducts = $productHandler->getAllProducts(); // You might want to crea
         <div>
             <ul id="navbar">
                 <li><a href="home.php" class="active">Home</a></li>
+                <li><a href="profile.php">My Profile</a></li>
                 <li><a href="Shop.php">Shop Now</a></li>
                 <li><a href="AboutUs.html">About Us</a></li>
                 <li><a href="Contact.html">Contact</a></li>
@@ -316,20 +301,28 @@ $featuredProducts = $productHandler->getAllProducts(); // You might want to crea
         </div>
     </section>
 
+    <!-- Display success/error messages -->
+    <?php if (isset($_SESSION['success'])): ?>
+        <div class="success-message"><?php echo $_SESSION['success']; unset($_SESSION['success']); ?></div>
+    <?php endif; ?>
+    
+    <?php if (isset($_SESSION['error'])): ?>
+        <div class="error-message"><?php echo $_SESSION['error']; unset($_SESSION['error']); ?></div>
+    <?php endif; ?>
+
+    <!-- Your existing hero section -->
     <section id="hero">
         <div class="hero-content">
-        <h4>Trade-in-offer</h4>
-        <h2>Super value deals</h2>
-        <h1>On all products</h1>
-        <p>Save more with coupons & up to 70% off! </p>
-        <a href="Shop.php" class="normal">Shop Now</a>
-                </div>
-                <div class="hero-logo-container">
-                    <img src="images/Logo.jpg" alt="Thrit Palor Business Logo" class="hero-logo">
-                </div>
+            <h4>Trade-in-offer</h4>
+            <h2>Super value deals</h2>
+            <h1>On all products</h1>
+            <p>Save more with coupons & up to 70% off! </p>
+            <a href="Shop.php" class="normal">Shop Now</a>
+        </div>
+        <div class="hero-logo-container">
+            <img src="images/Logo.jpg" alt="Thrit Palor Business Logo" class="hero-logo">
+        </div>
     </section>
-
-    
 
     <section id="product1" class="section-p1">
         <h2>Featured Products</h2>
@@ -416,57 +409,56 @@ $featuredProducts = $productHandler->getAllProducts(); // You might want to crea
 
     <footer class="section-p1">
         <div class="footer-grid-wrapper">
-        <div class="col">
-            <h4>Contact</h4>
-            <p><strong>Address: </strong> 8001 Foreshore, Adderly St, Cape Town</p>
-            <p><strong>Phone: </strong> (+27) 069 927 9438 /(+26) 01 2345 6789</p>
-            <p><strong>Hours: </strong> Open 24/7, Mon - Sat</p>
-            <div class="follow">
-                <h4>Follow us</h4>
-                <div class="icon">
-                    <i class="fab fa-facebook-f"></i>
-                    <i class="fab fa-twitter"></i>
-                    <i class="fab fa-instagram"></i>
-                    <i class="fab fa-pinterest-p"></i>
-                    <i class="fab fa-youtube"></i>
+            <div class="col">
+                <h4>Contact</h4>
+                <p><strong>Address: </strong> 8001 Foreshore, Adderly St, Cape Town</p>
+                <p><strong>Phone: </strong> (+27) 069 927 9438 /(+26) 01 2345 6789</p>
+                <p><strong>Hours: </strong> Open 24/7, Mon - Sat</p>
+                <div class="follow">
+                    <h4>Follow us</h4>
+                    <div class="icon">
+                        <i class="fab fa-facebook-f"></i>
+                        <i class="fab fa-twitter"></i>
+                        <i class="fab fa-instagram"></i>
+                        <i class="fab fa-pinterest-p"></i>
+                        <i class="fab fa-youtube"></i>
+                    </div>
                 </div>
             </div>
-        </div>
-            
 
-        <div class="col">
-            <h4>About</h4>
-            <a href="#">About us</a>
-            <a href="#">Delivery Information</a>
-            <a href="#">Privacy Policy</a>
-            <a href="#">Terms & Conditions</a>
-            <a href="#">Contact Us</a>
-        </div>
-
-        <div class="col">
-            <h4>My Account</h4>
-            <a href="#">Sign In</a>
-            <a href="#">View Cart</a>
-            <a href="#">My Wishlist</a>
-            <a href="#">Track My Order</a>
-            <a href="#">Help</a>
-        </div>
-
-        <div class="col install">
-            <h4>Install App</h4>
-            <p>From App Store or Google Play</p>
-            <div class="row">
-                <img src="img/pay/app.jpg" alt="">
-                <img src="img/pay/play.jpg" alt="">
+            <div class="col">
+                <h4>About</h4>
+                <a href="#">About us</a>
+                <a href="#">Delivery Information</a>
+                <a href="#">Privacy Policy</a>
+                <a href="#">Terms & Conditions</a>
+                <a href="#">Contact Us</a>
             </div>
-            <p>Secured Payment Gateways </p>
-            <img src="img/pay/pay.png" alt="">
-        </div>
 
-        <div class="copyright">
-            <p>© 2024, ThriftPalor</p>
-        </div>
+            <div class="col">
+                <h4>My Account</h4>
+                <a href="#">Sign In</a>
+                <a href="#">View Cart</a>
+                <a href="#">My Wishlist</a>
+                <a href="#">Track My Order</a>
+                <a href="#">Help</a>
             </div>
+
+            <div class="col install">
+                <h4>Install App</h4>
+                <p>From App Store or Google Play</p>
+                <div class="row">
+                    <img src="img/pay/app.jpg" alt="">
+                    <img src="img/pay/play.jpg" alt="">
+                </div>
+                <p>Secured Payment Gateways </p>
+                <img src="img/pay/pay.png" alt="">
+            </div>
+
+            <div class="copyright">
+                <p>© 2024, ThriftPalor</p>
+            </div>
+        </div>
     </footer>
 
     <script src="./js/enhanced-effects.js"></script>
@@ -498,6 +490,16 @@ $featuredProducts = $productHandler->getAllProducts(); // You might want to crea
                     heroText.style.opacity = '1';
                     heroText.style.transform = 'translateY(0)';
                 }, 300);
+            }
+            
+            // Mobile menu functionality
+            const mobileMenu = document.getElementById('mobile-menu');
+            const navbar = document.getElementById('navbar');
+            
+            if (mobileMenu && navbar) {
+                mobileMenu.addEventListener('click', function() {
+                    navbar.classList.toggle('active');
+                });
             }
         });
     </script>

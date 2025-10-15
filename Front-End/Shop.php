@@ -26,8 +26,16 @@ $products = $productHandler->getAllProducts();
                 <li><a class="active" href="Shop.php">Shop</a></li>
                 <li><a href="AboutUs.html">About Us</a></li>
                 <li><a href="Contact.html">Contact</a></li>
+                
+                <!-- Seller-specific navigation -->
+                <?php if(isset($_SESSION['user_id']) && $_SESSION['role'] === 'seller'): ?>
+                    <li><a href="seller_dashboard.php">Seller Dashboard</a></li>
+                    <li><a href="add_product.php">Add Product</a></li>
+                <?php endif; ?>
+                
                 <li><a href="orders.php">My Orders</a></li>
                 <li><a href="cart.php"><i class="fas fa-shopping-cart"></i> Cart</a></li>
+                
                 <?php if(isset($_SESSION['user_id'])): ?>
                     <li><a href="logout.php">Logout</a></li>
                 <?php else: ?>

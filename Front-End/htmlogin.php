@@ -5,8 +5,42 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login - Thrift Parlor</title>
     <link rel="stylesheet" href="./css/login.css" type="text/css">
+    <link rel="stylesheet" href="./css/style.css" type="text/css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/3.5.0/remixicon.css" crossorigin="">
     <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" />
+
+    <style>
+    /* DARK FORM VERSION */
+    .login_form {
+        background-color: #471c3c !important; /* Dark purple background */
+        color: white !important;
+        border: 2px solid #c48828 !important; /* Gold border */
+    }
+    
+    .login_box {
+        background: rgba(255, 255, 255, 0.1) !important; /* Semi-transparent white */
+        border: 2px solid #c48828 !important;
+    }
+    
+    .login_box input {
+        color: white !important;
+        background: transparent !important;
+    }
+    
+    .login_box input::placeholder {
+        color: rgba(255, 255, 255, 0.7) !important;
+    }
+    
+    .login_title {
+        color: #c48828 !important; /* Gold title */
+    }
+    
+    .login_check-label,
+    .login_register {
+        color: white !important;
+    }
+</style>
+
 </head>
 <body>
     <section id="header">
@@ -65,5 +99,6 @@
     </div>
 
     <script src="./js/Home.js"></script>
+
 </body>
 </html>
