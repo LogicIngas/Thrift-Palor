@@ -115,4 +115,23 @@ $products = $productHandler->getAllProducts();
     
     <script src="./js/enhanced-effects.js"></script>
 </body>
+
+<!-- Notification Messages -->
+<?php if(isset($_SESSION['success'])): ?>
+    <div id="notification" class="notification success">
+        <i class="fas fa-check-circle"></i>
+        <span><?php echo $_SESSION['success']; unset($_SESSION['success']); ?></span>
+        <button class="close-btn" onclick="this.parentElement.style.display='none';">&times;</button>
+    </div>
+<?php endif; ?>
+
+<?php if(isset($_SESSION['error'])): ?>
+    <div id="notification" class="notification error">
+        <i class="fas fa-exclamation-circle"></i>
+        <span><?php echo $_SESSION['error']; unset($_SESSION['error']); ?></span>
+        <button class="close-btn" onclick="this.parentElement.style.display='none';">&times;</button>
+    </div>
+<?php endif; ?>
+
+
 </html>

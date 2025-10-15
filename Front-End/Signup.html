@@ -7,16 +7,23 @@
     <title>Thrift Parlor - Sign Up</title>
     <link rel="stylesheet" href="css/signup.css">
     <link rel="stylesheet" href="./css/enhanced-style.css">
-    <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.css"> -->
+
     <style>
+    /* === LOGIN FORM STYLING === */
     .login_form {
         background-color: #471c3c !important; /* Dark purple background */
         color: white !important;
         border: 2px solid #c48828 !important; /* Gold border */
+        padding: 40px 30px;
+        border-radius: 15px;
+        max-width: 600px;
+        margin: 0 auto;
+        position: relative;
+        z-index: 1;
     }
 
     .login_box {
-        background: rgba(255, 255, 255, 0.1) !important; /* Semi-transparent white */
+        background: rgba(255, 255, 255, 0.1) !important;
         border: 2px solid #c48828 !important;
     }
 
@@ -30,7 +37,7 @@
     }
 
     .login_title {
-        color: #c48828 !important; /* Gold title */
+        color: #c48828 !important;
     }
 
     .login_check-label,
@@ -38,7 +45,27 @@
         color: white !important;
     }
 
-    /* === Role Selection Section === */
+    /* === LOGO STYLING === */
+    .signup-logo-container {
+        text-align: center;
+        margin-bottom: -60px; /* overlap the form slightly */
+        position: relative;
+        z-index: 2;
+    }
+
+    .signup-logo-container img {
+        width: 120px;
+        height: auto;
+        border-radius: 50%;
+        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+        transition: transform 0.3s ease;
+    }
+
+    .signup-logo-container img:hover {
+        transform: scale(1.05);
+    }
+
+    /* === ROLE SELECTION STYLING === */
     .role-selection {
         margin: 20px 0;
     }
@@ -84,7 +111,6 @@
         border-radius: 50%;
         outline: none;
         cursor: pointer;
-        position: relative;
         background: transparent;
         transition: 0.3s;
     }
@@ -107,8 +133,19 @@
         color: #f7d794;
         font-weight: 600;
     }
-</style>
 
+    /* === RESPONSIVE === */
+    @media (max-width: 600px) {
+        .login_form {
+            padding: 30px 20px;
+            margin: 80px 20px 0;
+        }
+
+        .signup-logo-container img {
+            width: 100px;
+        }
+    }
+    </style>
 </head>
 
 <body>
@@ -118,12 +155,14 @@
         </div>
         <h1 class="logo-text">Thrift Parlor</h1>
         <nav>
-            <ul id="navbar">
-                <!-- <li><a href="home.php">Home</a></li>
-                <li><a class="active" href="htmlogin.php">Login</a></li> -->
-            </ul>
+            <ul id="navbar"></ul>
         </nav>
     </header>
+
+    <!-- Logo floating above form -->
+    <div class="signup-logo-container">
+        <img src="images/Logo.jpg" alt="Thrift Parlor Logo">
+    </div>
 
     <main class="login">
         <form class="login_form" id="signupForm" action="auth.php" method="POST">
@@ -163,7 +202,7 @@
                     </div>
                 </div>
 
-                <!-- SIMPLE WORKING RADIO BUTTONS -->
+                <!-- ROLE SELECTION -->
                 <div class="role-selection">
                     <p>Register as:</p>
                     <div class="simple-radio">
@@ -192,66 +231,38 @@
         </form>
     </main>
 
-    <!-- <footer class="site-footer">
-        <div class="footer-content">
-            <div class="footer-section">
-                <p><i class="fas fa-box"></i> Thrift Parlor</p>
-                <p><i class="fab fa-instagram"></i> Thrift Parlor</p>
-                <p><i class="fab fa-tiktok"></i> Thrift Parlor</p>
-            </div>
-            <div class="footer-section">
-                <p>Thrift Parlor</p>
-            </div>
-            <div class="footer-section">
-                <p>About us</p>
-                <p>Store Policy</p>
-                <p>Terms and Conditions</p>
-            </div>
-            <div class="footer-section">
-                <p>Contact us</p>
-                <p>FAQ</p>
-                <p>Delivery options</p>
-            </div>
-            <div class="footer-section">
-                <p>Orders</p>
-                <p>Payment Option</p>
-                <p>Help Center</p>
-            </div>
-        </div>
-    </footer> -->
-    
     <script src="./js/Home.js"></script>
     <script>
-        // Simple JavaScript to ensure radio buttons work
-        document.addEventListener('DOMContentLoaded', function() {
-            const radioButtons = document.querySelectorAll('input[name="user_role"]');
-            radioButtons.forEach(radio => {
-                radio.addEventListener('change', function() {
-                    console.log('Selected role:', this.value);
-                });
-            });
-
-            // Form validation
-            document.getElementById('signupForm').addEventListener('submit', function(e) {
-                const password = document.querySelector('input[name="password"]').value;
-                const confirmPassword = document.querySelector('input[name="confirm_password"]').value;
-                const terms = document.getElementById('terms').checked;
-                
-                if (password !== confirmPassword) {
-                    e.preventDefault();
-                    alert('Passwords do not match!');
-                    return false;
-                }
-                
-                if (!terms) {
-                    e.preventDefault();
-                    alert('Please agree to the Terms & Conditions');
-                    return false;
-                }
-                
-                return true;
+    // Simple JavaScript to ensure radio buttons work
+    document.addEventListener('DOMContentLoaded', function () {
+        const radioButtons = document.querySelectorAll('input[name="user_role"]');
+        radioButtons.forEach(radio => {
+            radio.addEventListener('change', function () {
+                console.log('Selected role:', this.value);
             });
         });
+
+        // Form validation
+        document.getElementById('signupForm').addEventListener('submit', function (e) {
+            const password = document.querySelector('input[name="password"]').value;
+            const confirmPassword = document.querySelector('input[name="confirm_password"]').value;
+            const terms = document.getElementById('terms').checked;
+
+            if (password !== confirmPassword) {
+                e.preventDefault();
+                alert('Passwords do not match!');
+                return false;
+            }
+
+            if (!terms) {
+                e.preventDefault();
+                alert('Please agree to the Terms & Conditions');
+                return false;
+            }
+
+            return true;
+        });
+    });
     </script>
 </body>
 

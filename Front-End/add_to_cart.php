@@ -8,12 +8,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['add_to_cart'])) {
     $product_price = $_POST['product_price'];
     $product_image = $_POST['product_image'];
     $quantity = isset($_POST['quantity']) ? intval($_POST['quantity']) : 1;
-    
+
     // Initialize cart if not exists
     if (!isset($_SESSION['cart'])) {
         $_SESSION['cart'] = [];
     }
-    
+
     // Check if product already in cart
     $found = false;
     foreach ($_SESSION['cart'] as &$item) {
@@ -23,7 +23,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['add_to_cart'])) {
             break;
         }
     }
-    
+
     // Add new item to cart
     if (!$found) {
         $_SESSION['cart'][] = [
@@ -34,15 +34,17 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['add_to_cart'])) {
             'quantity' => $quantity
         ];
     }
-    
-    $_SESSION['success'] = "Product added to cart successfully!";
-    
+
+    // Set a clean success message for notification banner
+    $_SESSION['success'] = "$product_name added to cart successfully!";
+
     // Redirect back to previous page or shop
     $redirect = isset($_SERVER['HTTP_REFERER']) ? $_SERVER['HTTP_REFERER'] : 'Shop.php';
     header("Location: $redirect");
     exit();
 }
 
+// Default redirect if accessed directly
 header("Location: Shop.php");
 exit();
 ?>

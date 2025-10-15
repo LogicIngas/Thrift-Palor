@@ -276,6 +276,58 @@ $featuredProducts = $productHandler->getAllProducts();
                 padding: 40px 20px;
             }
         }
+        .notification {
+    position: fixed;
+    top: 30px;
+    right: 30px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 15px 25px;
+    border-radius: 12px;
+    color: #fff;
+    font-weight: 500;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.25);
+    opacity: 0;
+    pointer-events: none;
+    transform: translateY(-20px);
+    transition: all 0.5s ease;
+    z-index: 9999;
+    max-width: 320px;
+}
+
+.notification.show {
+    opacity: 1;
+    pointer-events: auto;
+    transform: translateY(0);
+}
+
+.notification.success {
+    background: linear-gradient(135deg, #28a745, #3ed75f);
+}
+
+.notification.error {
+    background: linear-gradient(135deg, #dc3545, #e95f5f);
+}
+
+.notification i {
+    font-size: 20px;
+}
+
+.notification span {
+    flex-grow: 1;
+}
+
+.notification .close-btn {
+    background: transparent;
+    border: none;
+    font-size: 18px;
+    color: #fff;
+    cursor: pointer;
+    padding: 0;
+    line-height: 1;
+}
+
     </style>
 </head>
 <body>
@@ -289,7 +341,7 @@ $featuredProducts = $productHandler->getAllProducts();
                 <li><a href="profile.php">My Profile</a></li>
                 <li><a href="Shop.php">Shop Now</a></li>
                 <li><a href="AboutUs.html">About Us</a></li>
-                <li><a href="Contact.html">Contact</a></li>
+                <li><a href="contact.php">Contact</a></li>
                 <li><a href="orders.php">My Orders</a></li>
                 <li><a href="cart.php"><i class="fas fa-shopping-cart"></i> Cart</a></li>
                 <?php if(isset($_SESSION['user_id'])): ?>
@@ -504,4 +556,23 @@ $featuredProducts = $productHandler->getAllProducts();
         });
     </script>
 </body>
+
+<!-- Notification Messages -->
+<?php if(isset($_SESSION['success'])): ?>
+    <div id="notification" class="notification success">
+        <i class="fas fa-check-circle"></i>
+        <span><?php echo $_SESSION['success']; unset($_SESSION['success']); ?></span>
+        <button class="close-btn" onclick="this.parentElement.style.display='none';">&times;</button>
+    </div>
+<?php endif; ?>
+
+<?php if(isset($_SESSION['error'])): ?>
+    <div id="notification" class="notification error">
+        <i class="fas fa-exclamation-circle"></i>
+        <span><?php echo $_SESSION['error']; unset($_SESSION['error']); ?></span>
+        <button class="close-btn" onclick="this.parentElement.style.display='none';">&times;</button>
+    </div>
+<?php endif; ?>
+
+
 </html>

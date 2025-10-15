@@ -189,7 +189,7 @@ foreach ($orders as &$order) {
                 <li><a href="home.php">Home</a></li>
                 <li><a href="Shop.php">Shop</a></li>
                 <li><a href="AboutUs.html">About Us</a></li>
-                <li><a href="Contact.html">Contact</a></li>
+                <li><a href="contact.php">Contact</a></li>
                 <li><a href="orders.php" class="active">My Orders</a></li>
                 <li><a href="logout.php">Logout</a></li>
             </ul>
