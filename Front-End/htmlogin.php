@@ -49,11 +49,12 @@
         </div> -->
         <div>
             <ul id="navbar">
-                <li><a href="home.php">Home</a></li>
-                <li><a href="Shop.php">Shop</a></li>
-                <li><a href="AboutUs.html">About Us</a></li>
-                <li><a href="Contact.html">Contact</a></li>
-                <li><a href="Payment.html">Payment</a></li>
+                <!-- <li><a href="home.php">Home</a></li> -->
+                <!-- <li><a href="Shop.php">Shop</a></li> -->
+                <!-- <li><a href="AboutUs.html">About Us</a></li> -->
+                <!-- <li><a href="Contact.html">Contact</a></li> -->
+                <!-- <li><a href="Payment.html">Payment</a></li> -->
+                <li><a href="htmlogin.php" class="active">Login</a></li>
             </ul>
         </div>
     </section>
