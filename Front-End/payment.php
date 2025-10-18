@@ -29,71 +29,124 @@ $order_id = $_SESSION['order_id'];
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
         }
         
-        /* Navigation Bar Styles */
-        nav {
-            background-color: #2c3e50;
-            padding: 15px 0;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-        }
-        
-        .nav-container {
-            max-width: 1200px;
-            margin: 0 auto;
+        /* Navigation Bar Styles from second file */
+        #header {
             display: flex;
-            justify-content: space-between;
             align-items: center;
-            padding: 0 20px;
+            justify-content: space-between;
+            padding: 20px 80px;
+            background: var(--primary-color, #471c3c);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.06);
+            z-index: 999;
+            position: sticky;
+            top: 0;
+            left: 0;
         }
-        
-        .logo {
-            color: white;
-            font-size: 24px;
-            font-weight: bold;
-            text-decoration: none;
-        }
-        
-        .nav-links {
+
+        #navbar {
             display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        #navbar li {
             list-style: none;
-            margin: 0;
-            padding: 0;
+            padding: 0 20px;
+            position: relative;
         }
-        
-        .nav-links li {
-            margin-left: 20px;
-        }
-        
-        .nav-links a {
-            color: white;
+
+        #navbar li a {
             text-decoration: none;
             font-size: 16px;
-            transition: color 0.3s ease;
+            font-weight: 600;
+            color: white;
+            transition: 0.3s ease;
         }
-        
-        .nav-links a:hover {
-            color: #3498db;
+
+        #navbar li a:hover,
+        #navbar li a.active {
+            color: var(--secondary-color, #a67c52);
         }
-        
-        .nav-links i {
-            margin-right: 5px;
+
+        #navbar li a.active::after,
+        #navbar li a:hover::after {
+            content: "";
+            width: 30%;
+            height: 2px;
+            background: var(--secondary-color, #a67c52);
+            position: absolute;
+            bottom: -4px;
+            left: 20px;
+        }
+
+        #mobile-menu {
+            display: none;
+            align-items: center;
+        }
+
+        /* Form styles */
+        .form-group {
+            margin-bottom: 15px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+
+        .form-group input {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-size: 16px;
+        }
+
+        .form-row {
+            display: flex;
+            gap: 15px;
+        }
+
+        .form-row .form-group {
+            flex: 1;
+        }
+
+        .place-order-btn {
+            width: 100%;
+            padding: 12px;
+            background-color: var(--primary-color, #471c3c);
+            color: white;
+            border: none;
+            border-radius: 4px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .place-order-btn:hover {
+            background-color: var(--secondary-color, #a67c52);
         }
     </style>
 </head>
 <body>
-    <!-- Navigation Bar -->
-    <nav>
-        <div class="nav-container">
-            <a href="index.php" class="logo">Thrift Palor</a>
-            <ul class="nav-links">
-                <li><a href="home.php"><i class="fas fa-home"></i>Home</a></li>
-                <li><a href="shop.php"><i class="fas fa-shopping-bag"></i>Shop</a></li>
-                <li><a href="cart.php"><i class="fas fa-shopping-cart"></i>Cart</a></li>
-                <li><a href="orders.php"><i class="fas fa-clipboard-list"></i>Orders</a></li>
-                <li><a href="profile.php"><i class="fas fa-user"></i>Profile</a></li>
-                <li><a href="logout.php"><i class="fas fa-sign-out-alt"></i>Logout</a></li>
+    <!-- Navigation Bar from second file -->
+    <section id="header">
+        <div id="mobile-menu">
+            <i class="fas fa-bars"></i>
+        </div>
+        <div>
+            <ul id="navbar">
+                <li><a href="home.php">Home</a></li>
+                <li><a href="shop.php">Shop</a></li>
+                <li><a href="AboutUs.html">About Us</a></li>
+                <li><a href="contact.php">Contact</a></li>
+                <li><a href="orders.php">My Orders</a></li>
+                <li><a href="cart.php"><i class="fas fa-shopping-cart"></i> Cart</a></li>
+                <li><a href="logout.php">Logout</a></li>
             </ul>
         </div>
-    </nav>
+    </section>
 
     <div class="payment-container">
         <h2>Payment Information</h2>

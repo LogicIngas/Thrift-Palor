@@ -16,7 +16,7 @@
         border: 2px solid #c48828 !important; /* Gold border */
         padding: 40px 30px;
         border-radius: 15px;
-        max-width: 600px;
+        max-width: 700px;
         margin: 0 auto;
         position: relative;
         z-index: 1;
@@ -38,6 +38,8 @@
 
     .login_title {
         color: #c48828 !important;
+        text-align: center;
+        margin-bottom: 30px;
     }
 
     .login_check-label,
@@ -48,53 +50,99 @@
     /* === LOGO STYLING === */
     .signup-logo-container {
         text-align: center;
-        margin-bottom: -60px; /* overlap the form slightly */
+        margin-bottom: 30px;
         position: relative;
         z-index: 2;
     }
 
     .signup-logo-container img {
-        width: 120px;
+        width: 180px;
         height: auto;
         border-radius: 50%;
-        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
         transition: transform 0.3s ease;
+        border: 4px solid #c48828;
     }
 
     .signup-logo-container img:hover {
         transform: scale(1.05);
     }
 
+    /* === FORM LAYOUT === */
+    .login_inputs {
+        display: flex;
+        flex-direction: column;
+        gap: 18px;
+    }
+
+    .form-row {
+        display: flex;
+        gap: 15px;
+        width: 100%;
+    }
+
+    .form-row .login_box {
+        flex: 1;
+        padding: 12px 15px;
+        border-radius: 8px;
+    }
+
+    .form-row .login_box input {
+        width: 100%;
+        border: none;
+        outline: none;
+        font-size: 15px;
+    }
+
+    /* Full width fields */
+    .full-width .login_box {
+        width: 100%;
+        padding: 12px 15px;
+        border-radius: 8px;
+    }
+
+    .full-width .login_box input {
+        width: 100%;
+        border: none;
+        outline: none;
+        font-size: 15px;
+    }
+
     /* === ROLE SELECTION STYLING === */
     .role-selection {
-        margin: 20px 0;
+        margin: 25px 0 20px 0;
+        text-align: center;
     }
 
     .role-selection p {
-        margin-bottom: 10px;
+        margin-bottom: 15px;
         font-weight: 600;
         color: #f7d794;
         text-transform: uppercase;
         letter-spacing: 1px;
+        font-size: 14px;
     }
 
     .simple-radio {
         display: flex;
-        gap: 25px;
+        gap: 20px;
+        justify-content: center;
         margin: 15px 0;
     }
 
     .simple-radio div {
         display: flex;
         align-items: center;
-        gap: 8px;
+        gap: 10px;
         position: relative;
-        padding: 8px 14px;
+        padding: 12px 24px;
         border: 2px solid #c48828;
         border-radius: 8px;
         cursor: pointer;
         transition: 0.3s ease;
         background: rgba(255, 255, 255, 0.05);
+        min-width: 120px;
+        justify-content: center;
     }
 
     .simple-radio div:hover {
@@ -105,8 +153,8 @@
     .simple-radio input[type="radio"] {
         appearance: none;
         -webkit-appearance: none;
-        width: 18px;
-        height: 18px;
+        width: 20px;
+        height: 20px;
         border: 2px solid #c48828;
         border-radius: 50%;
         outline: none;
@@ -117,7 +165,7 @@
 
     .simple-radio input[type="radio"]:checked {
         background-color: #c48828;
-        box-shadow: 0 0 6px #c48828;
+        box-shadow: 0 0 8px #c48828;
     }
 
     .simple-radio label {
@@ -134,15 +182,60 @@
         font-weight: 600;
     }
 
+    /* === BUTTON STYLING === */
+    .login_button {
+        width: 100%;
+        margin-top: 25px;
+    }
+
+    .login_check {
+        margin-top: 20px;
+    }
+
+    .login_register {
+        text-align: center;
+        margin-top: 20px;
+    }
+
     /* === RESPONSIVE === */
-    @media (max-width: 600px) {
+    @media (max-width: 768px) {
         .login_form {
             padding: 30px 20px;
-            margin: 80px 20px 0;
+            margin: 20px;
+            max-width: 100%;
         }
 
         .signup-logo-container img {
-            width: 100px;
+            width: 150px;
+        }
+
+        .form-row {
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .simple-radio {
+            gap: 15px;
+        }
+
+        .simple-radio div {
+            padding: 10px 20px;
+            min-width: 100px;
+        }
+    }
+
+    @media (max-width: 480px) {
+        .signup-logo-container img {
+            width: 120px;
+        }
+
+        .simple-radio {
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .simple-radio div {
+            width: 80%;
         }
     }
     </style>
@@ -159,7 +252,7 @@
         </nav>
     </header>
 
-    <!-- Logo floating above form -->
+    <!-- Logo at top -->
     <div class="signup-logo-container">
         <img src="images/Logo.jpg" alt="Thrift Parlor Logo">
     </div>
@@ -169,35 +262,43 @@
             <h1 class="login_title">Create Account</h1>
 
             <div class="login_inputs">
+                <!-- Name Fields -->
                 <div class="form-row">
-                    <div class="login_box" style="flex: 1;">
+                    <div class="login_box">
                         <input type="text" name="first_name" placeholder="First Name" required>
                     </div>
-                    <div class="login_box" style="flex: 1;">
+                    <div class="login_box">
                         <input type="text" name="last_name" placeholder="Last Name" required>
                     </div>
                 </div>
 
-                <div class="form-row">
-                    <div class="login_box" style="flex: 1;">
+                <!-- Username -->
+                <div class="form-row full-width">
+                    <div class="login_box">
                         <input type="text" name="username" placeholder="Username" required>
                     </div>
-                    <div class="login_box" style="flex: 1;">
+                </div>
+
+                <!-- Email -->
+                <div class="form-row full-width">
+                    <div class="login_box">
                         <input type="email" name="email" placeholder="Email ID" required>
                     </div>
                 </div>
 
+                <!-- Password Fields -->
                 <div class="form-row">
-                    <div class="login_box" style="flex: 1;">
+                    <div class="login_box">
                         <input type="password" name="password" placeholder="Password" required>
                     </div>
-                    <div class="login_box" style="flex: 1;">
+                    <div class="login_box">
                         <input type="password" name="confirm_password" placeholder="Confirm Password" required>
                     </div>
                 </div>
 
-                <div class="form-row">
-                    <div class="login_box" style="flex: 1;">
+                <!-- Phone -->
+                <div class="form-row full-width">
+                    <div class="login_box">
                         <input type="tel" name="phone" placeholder="Phone Number">
                     </div>
                 </div>
