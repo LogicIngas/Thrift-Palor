@@ -1,8 +1,5 @@
-# Project-2
-For this subject we are required to develop a technical solution to a problem we have encountered in our  community or at CPUT or elsewhere. As a group we will decide on the problem we wish to solve and how  we wish to use ICT to address the problem.
-We are required to use JAVA to develop the solution and are expected to have a working system on 
-conclusion of this subject.
-
+# Project 2
+For this subject we were required to develop a thifting Website gor our community or CPUT or elsewhere.
 # PROJECT SPECIFICATIONS
 
-<img width="496" height="559" alt="image" src="https://github.com/user-attachments/assets/ac7d19cc-c17d-4983-aa2d-c61d5c51f095" />
+<img width="6080" height="2184" alt="Physical Data Model (3)" src="https://github.com/user-attachments/assets/e59fa6be-0839-4450-a26b-efc7e2189cba" />
